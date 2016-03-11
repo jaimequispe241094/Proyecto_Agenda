@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import modelo.Agenda;
 import presentacion.reportes.ReporteAgenda;
+import presentacion.vista.LocalidadPanel;
 import presentacion.vista.VentanaPersona;
 import presentacion.vista.Vista;
 import dto.PersonaDTO;
@@ -22,6 +23,8 @@ public class Controlador implements ActionListener
 			this.vista.getBtnAgregar().addActionListener(this);
 			this.vista.getBtnBorrar().addActionListener(this);
 			this.vista.getBtnReporte().addActionListener(this);
+			this.vista.getLocalidadPanel().getBtnAgregar().addActionListener(this);
+			this.vista.getTipoContactoPanel().getBtnAgregar().addActionListener(this);
 			this.agenda = agenda;
 			this.personas_en_tabla = null;
 		}
@@ -48,6 +51,9 @@ public class Controlador implements ActionListener
 		
 		public void actionPerformed(ActionEvent e) 
 		{
+			
+			LocalidadPanel localPanel = this.vista.getLocalidadPanel();
+			
 			if(e.getSource() == this.vista.getBtnAgregar())
 			{
 				this.ventanaPersona = new VentanaPersona(this);
@@ -68,6 +74,17 @@ public class Controlador implements ActionListener
 				ReporteAgenda reporte = new ReporteAgenda(agenda.obtenerPersonas());
 				reporte.mostrar();				
 			}
+			
+			else if(e.getSource() == localPanel.getBtnAgregar())
+			{
+				if(localPanel.getTxtNombreLocalidad().getText().length() > 0)
+				{
+					localPanel.getListaLocalidad().add(localPanel.getTxtNombreLocalidad().getText());
+					localPanel.getTxtNombreLocalidad().setText("");
+				}
+			}
+			
+			
 			else if(e.getSource() == this.ventanaPersona.getBtnAgregarPersona())
 			{
 				String nombre = this.ventanaPersona.getTxtNombre().getText();
@@ -80,6 +97,28 @@ public class Controlador implements ActionListener
 					this.ventanaPersona.dispose();
 				}
 			}
+			
+			
+		
 		}
+		
+		
+		
+		/*public void actionPanelLocalidad(ActionEvent e)
+		{
+			LocalidadPanel localPanel = this.vista.getLocalidadPanel();
+			
+			if(e.getSource() == localPanel.getBtnAgregar())
+			{
+				if(localPanel.getTxtNombreLocalidad().getText().length() > 0)
+				{
+					localPanel.getListaLocalidad().add(localPanel.getTxtNombreLocalidad().getText());
+					localPanel.getTxtNombreLocalidad().setText("");
+				}
+			}
+			
+		}	
+		*/	
+		
 
 }

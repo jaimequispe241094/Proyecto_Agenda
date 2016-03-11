@@ -1,13 +1,11 @@
 package presentacion.vista;
 
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
 import presentacion.controlador.Controlador;
 
 public class VentanaPersona extends JFrame 

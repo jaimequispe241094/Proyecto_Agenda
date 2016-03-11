@@ -8,17 +8,23 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JTabbedPane;
 
 public class Vista
 {
-	private JFrame frame;
+	private JFrame frmAgenda;
 	private JTable tablaPersonas;
 	private JButton btnAgregar;
 	private JButton btnBorrar;
 	private JButton btnReporte;
+	private JButton btnEditar;
 	private DefaultTableModel modelPersonas;
-	private  String[] nombreColumnas = {"Nombre y apellido","Teléfono"};
-
+	private  String[] nombreColumnas = {"Nombre y apellido","Teléfono","Direccion","E-mail"};
+	private ContactoPanel contactoPanel;
+	private LocalidadPanel localidadPanel;
+	private TipoContactoPanel tipoContactoPanel;
+	
+	
 	public Vista() 
 	{
 		super();
@@ -29,18 +35,20 @@ public class Vista
 	private void initialize() 
 	{
 		this.cargarLookAndFeel();
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 315);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmAgenda = new JFrame();
+		frmAgenda.setTitle("Agenda");
+		frmAgenda.setResizable(false);
+		frmAgenda.setBounds(100, 80, 1107, 630);
+		frmAgenda.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmAgenda.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 434, 300);
-		frame.getContentPane().add(panel);
+		panel.setBounds(10, 11, 1071, 581);
+		frmAgenda.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JScrollPane spPersonas = new JScrollPane();
-		spPersonas.setBounds(10, 11, 414, 182);
+		spPersonas.setBounds(294, 55, 767, 446);
 		panel.add(spPersonas);
 		
 		modelPersonas = new DefaultTableModel(null,nombreColumnas);
@@ -50,24 +58,46 @@ public class Vista
 		tablaPersonas.getColumnModel().getColumn(0).setResizable(false);
 		tablaPersonas.getColumnModel().getColumn(1).setPreferredWidth(100);
 		tablaPersonas.getColumnModel().getColumn(1).setResizable(false);
-		
+		tablaPersonas.getColumnModel().getColumn(2).setPreferredWidth(100);
+		tablaPersonas.getColumnModel().getColumn(2).setResizable(false);
+		tablaPersonas.getColumnModel().getColumn(3).setPreferredWidth(100);
+		tablaPersonas.getColumnModel().getColumn(3).setResizable(false);
 		spPersonas.setViewportView(tablaPersonas);
 		
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(10, 33, 274, 468);
+		panel.add(tabbedPane);
+		
+		contactoPanel = new ContactoPanel();
+		tabbedPane.addTab("Contacto", null, contactoPanel, null);
+		contactoPanel.setLayout(null);
+		
+		localidadPanel = new LocalidadPanel();
+		tabbedPane.addTab("Localidad", null, localidadPanel, null);
+		localidadPanel.setLayout(null);
+		
+		tipoContactoPanel = new TipoContactoPanel();
+		tabbedPane.addTab("TipoContacto", null, tipoContactoPanel, null);
+		tipoContactoPanel.setLayout(null);
+		
+		
 		btnAgregar = new JButton("Agregar");
-		btnAgregar.setBounds(10, 228, 89, 40);
+		btnAgregar.setBounds(313, 519, 111, 51);
 		panel.add(btnAgregar);
 		
-		JButton btnEditar = new JButton("Editar");
-		btnEditar.setBounds(119, 228, 89, 40);
+		btnEditar = new JButton("Editar");
+		btnEditar.setBounds(506, 519, 111, 51);
 		panel.add(btnEditar);
 		
 		btnBorrar = new JButton("Borrar");
-		btnBorrar.setBounds(228, 228, 89, 40);
+		btnBorrar.setBounds(717, 519, 111, 51);
 		panel.add(btnBorrar);
 		
 		btnReporte = new JButton("Reporte");
-		btnReporte.setBounds(337, 228, 89, 40);
+		btnReporte.setBounds(896, 519, 111, 51);
 		panel.add(btnReporte);
+		
 	}
 	
 	private void cargarLookAndFeel() 
@@ -86,7 +116,7 @@ public class Vista
 
 	public void show()
 	{
-		this.frame.setVisible(true);
+		this.frmAgenda.setVisible(true);
 	}
 	
 	public JButton getBtnAgregar() 
@@ -97,6 +127,11 @@ public class Vista
 	public JButton getBtnBorrar() 
 	{
 		return btnBorrar;
+	}
+	
+	public JButton getBtnEditar()
+	{
+		return btnEditar;
 	}
 	
 	public JButton getBtnReporte() 
@@ -118,4 +153,22 @@ public class Vista
 	{
 		return nombreColumnas;
 	}
+	
+	
+	public ContactoPanel getContactoPanel()
+	{
+		return contactoPanel;
+	}
+	
+	public LocalidadPanel getLocalidadPanel()
+	{
+		return localidadPanel;
+	}
+	
+	public TipoContactoPanel getTipoContactoPanel()
+	{
+		return tipoContactoPanel;
+	}
+	
+	
 }
