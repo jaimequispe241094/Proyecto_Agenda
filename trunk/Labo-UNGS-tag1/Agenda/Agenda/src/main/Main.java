@@ -17,5 +17,6 @@ public class Main
 		Controlador controlador = new Controlador(vista, modelo);
 		controlador.inicializar();
 		//accedi al repoooo!! 
+		//repoo 4 pruebaa
 	}
 }
