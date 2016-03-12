@@ -15,7 +15,8 @@ public class LocalidadPanel extends JPanel
 	private JButton btnAgregar;
 	private JButton btnBorrar;	
 	private JButton btnModificar;
-	
+	private JButton btnGuardar;	
+	private JButton btnCancelar;
 	
 	public LocalidadPanel()
 	{
@@ -49,6 +50,17 @@ public class LocalidadPanel extends JPanel
 		btnModificar = new JButton("M");
 		btnModificar.setBounds(199, 425, 64, 47);
 		this.add(btnModificar);
+		
+		btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(21, 425, 106, 47);
+		btnGuardar.setVisible(false);
+		this.add(btnGuardar);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(157, 425, 106, 47);
+		btnCancelar.setVisible(false);
+		this.add(btnCancelar);
+		
 	}
 
 
@@ -75,7 +87,16 @@ public class LocalidadPanel extends JPanel
 	public JButton getBtnModificar() 
 	{
 		return btnModificar;
+	}
+
+	public JButton getBtnGuardar() 
+	{
+		return btnGuardar;
+	}
+
+	public JButton getBtnCancelar() 
+	{
+		return btnCancelar;
 	}	
-	
 	
 }
