@@ -19,7 +19,7 @@ public class Vista
 	private JButton btnReporte;
 	private JButton btnEditar;
 	private DefaultTableModel modelPersonas;
-	private  String[] nombreColumnas = {"Nombre y apellido","Teléfono","Direccion","E-mail"};
+	private  String[] nombreColumnas = {"Nombre", "Apellido","Cumpleaños","Email","Localidad","Direccion","Numero","Piso","Dpto","Tipo Contacto"};
 	private ContactoPanel contactoPanel;
 	private LocalidadPanel localidadPanel;
 	private TipoContactoPanel tipoContactoPanel;
@@ -38,23 +38,23 @@ public class Vista
 		frmAgenda = new JFrame();
 		frmAgenda.setTitle("Agenda");
 		frmAgenda.setResizable(false);
-		frmAgenda.setBounds(100, 25, 1200, 691);
+		frmAgenda.setBounds(65, 16, 1250, 691);
 		frmAgenda.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmAgenda.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 1184, 652);
+		panel.setBounds(10, 11, 1235, 652);
 		frmAgenda.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JScrollPane spPersonas = new JScrollPane();
-		spPersonas.setBounds(319, 55, 855, 504);
+		spPersonas.setBounds(319, 55, 905, 504);
 		panel.add(spPersonas);
 		
 		modelPersonas = new DefaultTableModel(null,nombreColumnas);
 		tablaPersonas = new JTable(modelPersonas);
 		
-		tablaPersonas.getColumnModel().getColumn(0).setPreferredWidth(103);
+		tablaPersonas.getColumnModel().getColumn(0).setPreferredWidth(200);
 		tablaPersonas.getColumnModel().getColumn(0).setResizable(false);
 		tablaPersonas.getColumnModel().getColumn(1).setPreferredWidth(100);
 		tablaPersonas.getColumnModel().getColumn(1).setResizable(false);
@@ -62,9 +62,20 @@ public class Vista
 		tablaPersonas.getColumnModel().getColumn(2).setResizable(false);
 		tablaPersonas.getColumnModel().getColumn(3).setPreferredWidth(100);
 		tablaPersonas.getColumnModel().getColumn(3).setResizable(false);
+		tablaPersonas.getColumnModel().getColumn(4).setPreferredWidth(100);
+		tablaPersonas.getColumnModel().getColumn(4).setResizable(false);
+		tablaPersonas.getColumnModel().getColumn(5).setPreferredWidth(100);
+		tablaPersonas.getColumnModel().getColumn(5).setResizable(false);
+		tablaPersonas.getColumnModel().getColumn(6).setPreferredWidth(100);
+		tablaPersonas.getColumnModel().getColumn(6).setResizable(false);
+		tablaPersonas.getColumnModel().getColumn(7).setPreferredWidth(100);
+		tablaPersonas.getColumnModel().getColumn(7).setResizable(false);
+		tablaPersonas.getColumnModel().getColumn(8).setPreferredWidth(100);
+		tablaPersonas.getColumnModel().getColumn(8).setResizable(false);
+		tablaPersonas.getColumnModel().getColumn(9).setPreferredWidth(100);
+		tablaPersonas.getColumnModel().getColumn(9).setResizable(false);
 		spPersonas.setViewportView(tablaPersonas);
 		
-		tablaPersonas.setEnabled(false);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(10, 33, 290, 526);

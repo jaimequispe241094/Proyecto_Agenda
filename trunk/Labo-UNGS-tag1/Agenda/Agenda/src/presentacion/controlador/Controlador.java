@@ -15,6 +15,8 @@ public class Controlador implements ActionListener
 		private List<PersonaDTO> personas_en_tabla;
 		private VentanaPersona ventanaPersona; 
 		private Agenda agenda;
+		private ControladorLocalidad controlLocalidad;
+		private ControladorTipoContacto controladorTipoContacto;
 		
 		public Controlador(Vista vista, Agenda agenda)
 		{
@@ -23,6 +25,8 @@ public class Controlador implements ActionListener
 			this.vista.getBtnBorrar().addActionListener(this);
 			this.vista.getBtnReporte().addActionListener(this);
 			this.agenda = agenda;
+			this.controlLocalidad = new ControladorLocalidad(this.vista.getLocalidadPanel());
+			this.controladorTipoContacto = new ControladorTipoContacto(this.vista.getTipoContactoPanel());
 			this.personas_en_tabla = null;
 		}
 		
