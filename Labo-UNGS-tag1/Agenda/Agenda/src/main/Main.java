@@ -16,5 +16,6 @@ public class Main
 		Agenda modelo = new Agenda();
 		Controlador controlador = new Controlador(vista, modelo);
 		controlador.inicializar();
+		//accedi al repoooo!! 
 	}
 }
