@@ -10,7 +10,7 @@ public class PersonaDTO
 	private DomicilioDTO domicilio;
 	private String email;
 	private Date Cumpleaños;
-	private TipoDeContactoDTO tipoDeContacto;
+	private TipoContactoDTO tipoContacto;
 
 	public PersonaDTO(int idPersona, String nombre, String telefono)
 	{
@@ -21,7 +21,7 @@ public class PersonaDTO
 	
 	public PersonaDTO(int idPersona, String nombre, String telefono,
 			DomicilioDTO domicilio, String email, Date cumpleaños,
-			TipoDeContactoDTO tipoDeContacto) 
+			TipoContactoDTO tipoContacto) 
 	{
 		this.idPersona = idPersona;
 		this.nombre = nombre;
@@ -29,7 +29,7 @@ public class PersonaDTO
 		this.domicilio = domicilio;
 		this.email = email;
 		this.Cumpleaños = cumpleaños;
-		this.tipoDeContacto = tipoDeContacto;
+		this.tipoContacto = tipoContacto;
 	}
 	
 	public int getIdPersona() 
@@ -86,12 +86,12 @@ public class PersonaDTO
 		Cumpleaños = cumpleaños;
 	}
 
-	public TipoDeContactoDTO getTipoDeContacto() {
-		return tipoDeContacto;
+	public TipoContactoDTO getTipoContacto() {
+		return tipoContacto;
 	}
 
-	public void setTipoDeContacto(TipoDeContactoDTO tipoDeContacto) {
-		this.tipoDeContacto = tipoDeContacto;
+	public void setTipoContacto(TipoContactoDTO tipoContacto) {
+		this.tipoContacto = tipoContacto;
 	}	
 	
 }
