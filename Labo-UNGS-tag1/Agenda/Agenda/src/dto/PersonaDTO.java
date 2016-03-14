@@ -7,9 +7,13 @@ public class PersonaDTO
 	private int idPersona;
 	private String nombre;
 	private String telefono;
-	private DomicilioDTO domicilio;
+	private String calle;
+	private int altura;
+	private int piso;
+	private int depto;
+	private LocalidadDTO localidad;
 	private String email;
-	private Date Cumpleaños;
+	private Date cumpleaños;
 	private TipoContactoDTO tipoContacto;
 
 	public PersonaDTO(int idPersona, String nombre, String telefono)
@@ -18,20 +22,25 @@ public class PersonaDTO
 		this.nombre = nombre;
 		this.telefono = telefono;
 	}	
-	
+		
 	public PersonaDTO(int idPersona, String nombre, String telefono,
-			DomicilioDTO domicilio, String email, Date cumpleaños,
-			TipoContactoDTO tipoContacto) 
-	{
+			String calle, int altura, int piso, int depto,
+			LocalidadDTO localidad, String email, Date cumpleaños,
+			TipoContactoDTO tipoContacto) {
+		super();
 		this.idPersona = idPersona;
 		this.nombre = nombre;
 		this.telefono = telefono;
-		this.domicilio = domicilio;
+		this.calle = calle;
+		this.altura = altura;
+		this.piso = piso;
+		this.depto = depto;
+		this.localidad = localidad;
 		this.email = email;
-		this.Cumpleaños = cumpleaños;
+		this.cumpleaños = cumpleaños;
 		this.tipoContacto = tipoContacto;
 	}
-	
+
 	public int getIdPersona() 
 	{
 		return this.idPersona;
@@ -62,35 +71,83 @@ public class PersonaDTO
 		this.telefono = telefono;
 	}
 
-	public DomicilioDTO getDomicilio() {
-		return domicilio;
+	public String getCalle() 
+	{
+		return calle;
 	}
 
-	public void setDomicilio(DomicilioDTO domicilio) {
-		this.domicilio = domicilio;
+	public void setCalle(String calle) 
+	{
+		this.calle = calle;
 	}
 
-	public String getEmail() {
+	public int getAltura() 
+	{
+		return altura;
+	}
+
+	public void setAltura(int altura) 
+	{
+		this.altura = altura;
+	}
+
+	public int getPiso() 
+	{
+		return piso;
+	}
+
+	public void setPiso(int piso) 
+	{
+		this.piso = piso;
+	}
+
+	public int getDepto() 
+	{
+		return depto;
+	}
+
+	public void setDepto(int depto) 
+	{
+		this.depto = depto;
+	}
+
+	public LocalidadDTO getLocalidad() 
+	{
+		return localidad;
+	}
+
+	public void setLocalidad(LocalidadDTO localidad) 
+	{
+		this.localidad = localidad;
+	}
+
+	public String getEmail() 
+	{
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) 
+	{
 		this.email = email;
 	}
 
-	public Date getCumpleaños() {
-		return Cumpleaños;
+	public Date getCumpleaños() 
+	{
+		return cumpleaños;
 	}
 
-	public void setCumpleaños(Date cumpleaños) {
-		Cumpleaños = cumpleaños;
+	public void setCumpleaños(Date cumpleaños) 
+	{
+		cumpleaños = cumpleaños;
 	}
 
-	public TipoContactoDTO getTipoContacto() {
+	public TipoContactoDTO getTipoContacto() 
+	{
 		return tipoContacto;
 	}
 
-	public void setTipoContacto(TipoContactoDTO tipoContacto) {
+	public void setTipoContacto(TipoContactoDTO tipoContacto) 
+	{
 		this.tipoContacto = tipoContacto;
 	}	
 	
