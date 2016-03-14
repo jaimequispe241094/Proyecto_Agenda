@@ -11,7 +11,7 @@ import dto.PersonaDTO;
 
 public class PersonaDAO 
 {
-	private static final String insert = "INSERT INTO personas(idPersona, nombre, telefono) VALUES(?, ?, ?)";
+	private static final String insert = "INSERT INTO personas(idPersona, nombre, telefono, calle, altura, piso, depto, localidad, email, cumpleaños, tipoContacto) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String delete = "DELETE FROM personas WHERE idPersona = ?";
 	private static final String readall = "SELECT * FROM personas";
 	private static final Conexion conexion = Conexion.getConexion();
@@ -25,6 +25,16 @@ public class PersonaDAO
 			statement.setInt(1, persona.getIdPersona());
 			statement.setString(2, persona.getNombre());
 			statement.setString(3, persona.getTelefono());
+			
+			statement.setString(4, persona.getCalle());			
+			statement.setInt(5, persona.getAltura());
+			statement.setInt(6, persona.getPiso());
+			statement.setInt(7, persona.getDepto());
+			statement.setString(8, persona.getLocalidad().getNombre());
+			statement.setString(9, persona.getEmail());
+			statement.setDate(10, persona.getCumpleaños());
+			statement.setString(11, persona.getTipoContacto().getNombre());			
+			
 			if(statement.executeUpdate() > 0) //Si se ejecutï¿½ devuelvo true
 				return true;
 		} 
@@ -74,7 +84,10 @@ public class PersonaDAO
 			
 			while(resultSet.next())
 			{
-				personas.add(new PersonaDTO(resultSet.getInt("idPersona"), resultSet.getString("Nombre"), resultSet.getString("Telefono")));
+				personas.add(new PersonaDTO(resultSet.getInt("idPersona"), resultSet.getString("Nombre"), resultSet.getString("Telefono"), resultSet.getString("Calle"), resultSet.getInt("Altura"), resultSet.getInt("Piso"), resultSet.getInt("Depto"),
+						LocalidadDAO.getLocalidadDTO(resultSet.getInt("Localidad")),
+						resultSet.getString("Email"), resultSet.getDate("Cumpleaños"),
+						TipoContactoDAO.getTipoContactoDTO(resultSet.getInt("TipoContacto"))));
 			}
 		} 
 		catch (SQLException e) 

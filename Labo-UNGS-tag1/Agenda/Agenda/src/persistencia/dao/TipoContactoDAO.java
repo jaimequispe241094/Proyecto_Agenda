@@ -13,9 +13,10 @@ import dto.TipoContactoDTO;
 
 public class TipoContactoDAO 
 {
-	private static final String insert = "INSERT INTO personas(idTipo, nombre) VALUES(?, ?)";
-	private static final String delete = "DELETE FROM personas WHERE idTipo = ?";
-	private static final String readall = "SELECT * FROM personas";
+	private static final String insert = "INSERT INTO TipoContacto(idTipo, nombre) VALUES(?, ?)";
+	private static final String delete = "DELETE FROM TipoContacto WHERE idTipo = ?";
+	private static final String readall = "SELECT * FROM TipoContacto";
+	private static final String obtener = "SELECT * FROM TipoContacto WHERE idTipo = ?";
 	private static final Conexion conexion = Conexion.getConexion();
 	
 	public boolean insert(TipoContactoDTO tipo)
@@ -88,4 +89,29 @@ public class TipoContactoDAO
 		}
 		return tipos;
 	}
+	
+	public static TipoContactoDTO getTipoContactoDTO(int id)
+	{
+		PreparedStatement statement;
+		ResultSet resultSet; //Guarda el resultado de la query
+		TipoContactoDTO tipo = null;
+		try 
+		{
+			statement = conexion.getSQLConexion().prepareStatement(obtener);
+			resultSet = statement.executeQuery();
+			tipo = new TipoContactoDTO(resultSet.getInt("idTipo"), resultSet.getString("nombre"));
+			
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally //Se ejecuta siempre
+		{
+			conexion.cerrarConexion();
+		}
+		return tipo;
+	
+	}
+	
 }
