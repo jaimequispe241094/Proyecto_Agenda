@@ -2,12 +2,15 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.util.List;
 import modelo.Agenda;
 import presentacion.reportes.ReporteAgenda;
 import presentacion.vista.VentanaPersona;
 import presentacion.vista.Vista;
+import dto.LocalidadDTO;
 import dto.PersonaDTO;
+import dto.TipoContactoDTO;
 
 public class Controlador implements ActionListener
 {
@@ -15,25 +18,49 @@ public class Controlador implements ActionListener
 		private List<PersonaDTO> personas_en_tabla;
 		private VentanaPersona ventanaPersona; 
 		private Agenda agenda;
-		private ControladorLocalidad controlLocalidad;
+		private ControladorLocalidad controladorLocalidad;
 		private ControladorTipoContacto controladorTipoContacto;
+		private ControladorContacto controladorContacto;
 		
+		public Vista getVista() {
+			return vista;
+		}
+
 		public Controlador(Vista vista, Agenda agenda)
 		{
 			this.vista = vista;
+			this.agenda = agenda;
 			this.vista.getBtnAgregar().addActionListener(this);
 			this.vista.getBtnBorrar().addActionListener(this);
 			this.vista.getBtnReporte().addActionListener(this);
-			this.agenda = agenda;
-			this.controlLocalidad = new ControladorLocalidad(this.vista.getLocalidadPanel());
-			this.controladorTipoContacto = new ControladorTipoContacto(this.vista.getTipoContactoPanel());
+			this.controladorLocalidad = new ControladorLocalidad(this);
+			this.controladorTipoContacto = new ControladorTipoContacto(this);
+			this.controladorContacto = new ControladorContacto(this.vista.getContactoPanel(), this.agenda);
 			this.personas_en_tabla = null;
 		}
 		
+		public Agenda getAgenda() {
+			return agenda;
+		}
+
 		public void inicializar()
 		{
 			this.llenarTabla();
+			this.actualizarDatosLocalidades();
+			this.actualizarDatosTipoContactos();
 		}
+		
+		public void actualizarDatosLocalidades()
+		{
+			this.controladorLocalidad.cargarLocalidades();
+			this.controladorContacto.actualizarLocalidades();
+		}
+		
+		public void actualizarDatosTipoContactos()
+		{
+			this.controladorTipoContacto.cargarTiposContactos();			
+			this.controladorContacto.actualizarTipoContactos();
+		}	
 		
 		private void llenarTabla()
 		{
@@ -44,7 +71,12 @@ public class Controlador implements ActionListener
 			this.personas_en_tabla = agenda.obtenerPersonas();
 			for (int i = 0; i < this.personas_en_tabla.size(); i ++)
 			{
-				Object[] fila = {this.personas_en_tabla.get(i).getNombre(), this.personas_en_tabla.get(i).getTelefono()};
+				Object[] fila = { 	this.personas_en_tabla.get(i).getNombre(),
+									this.personas_en_tabla.get(i).getTelefono(),
+									this.personas_en_tabla.get(i).getCumpleaños(),
+									this.personas_en_tabla.get(i).getEmail(),
+									
+								};
 				this.vista.getModelPersonas().addRow(fila);
 			}
 			this.vista.show();
@@ -74,7 +106,19 @@ public class Controlador implements ActionListener
 			}
 			else if(e.getSource() == this.ventanaPersona.getBtnAgregarPersona())
 			{
-				PersonaDTO nuevaPersona = new PersonaDTO(0,this.ventanaPersona.getTxtNombre().getText(), ventanaPersona.getTxtTelefono().getText());
+				PersonaDTO nuevaPersona = new PersonaDTO
+						(	0,
+							vista.getContactoPanel().getTxtNombre().getText(), 
+							vista.getContactoPanel().getTxtTelefono().getText(),
+							vista.getContactoPanel().getTxtDireccion().getText(),
+							Integer.parseInt(vista.getContactoPanel().getTxtNumero().getText()),
+							Integer.parseInt(vista.getContactoPanel().getTxtPiso().getText()),
+							Integer.parseInt(vista.getContactoPanel().getTxtDpto().getText()),
+							((LocalidadDTO) vista.getContactoPanel().getListaLocalidades().getSelectedItem()),
+							vista.getContactoPanel().getTxtEmail().getText(),
+							(Date) vista.getContactoPanel().getFechaCumpleaños().getDate(),
+							((TipoContactoDTO) vista.getContactoPanel().getListaTipoContactos().getSelectedItem())
+						);
 				this.agenda.agregarPersona(nuevaPersona);
 				this.llenarTabla();
 				this.ventanaPersona.dispose();

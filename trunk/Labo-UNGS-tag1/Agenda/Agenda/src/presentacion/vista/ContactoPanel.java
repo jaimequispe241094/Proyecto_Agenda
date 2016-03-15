@@ -7,19 +7,22 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
 
+import dto.LocalidadDTO;
+import dto.TipoContactoDTO;
+
 @SuppressWarnings("serial")
 public class ContactoPanel extends JPanel{
 	
 	private JTextField txtNombre;
-	private JTextField txtApellido;
+	private JTextField txtTelefono;
 	private JTextField txtEmail;
 	private JTextField txtDireccion;
 	private JTextField txtNumero;
 	private JTextField txtPiso;
 	private JTextField txtDpto;
 	private JButton btnGuardar;
-	private JComboBox<String> listaLocalidad;
-	private JComboBox<String> listaTipoContacto;
+	private JComboBox<LocalidadDTO> listaLocalidad;
+	private JComboBox<TipoContactoDTO> listaTipoContacto;
 	private JDateChooser fechaCumpleaños;
 	
 	public ContactoPanel()
@@ -33,7 +36,7 @@ public class ContactoPanel extends JPanel{
 		lblNombre.setBounds(21, 43, 53, 14);
 		this.add(lblNombre);
 		
-		JLabel lblApellido = new JLabel("Apellido");
+		JLabel lblApellido = new JLabel("Telefono");
 		lblApellido.setBounds(21, 87, 46, 14);
 		this.add(lblApellido);
 		
@@ -74,10 +77,10 @@ public class ContactoPanel extends JPanel{
 		this.add(txtNombre);
 		txtNombre.setColumns(10);
 		
-		txtApellido = new JTextField();
-		txtApellido.setBounds(92, 80, 183, 28);
-		this.add(txtApellido);
-		txtApellido.setColumns(10);
+		txtTelefono = new JTextField();
+		txtTelefono.setBounds(92, 80, 183, 28);
+		this.add(txtTelefono);
+		txtTelefono.setColumns(10);
 		
 		txtEmail = new JTextField();
 		txtEmail.setBounds(92, 123, 183, 28);
@@ -108,11 +111,11 @@ public class ContactoPanel extends JPanel{
 		fechaCumpleaños.setBounds(92, 166, 183, 28);
 		this.add(fechaCumpleaños);
 		
-		listaLocalidad = new JComboBox<String>();
+		listaLocalidad = new JComboBox<LocalidadDTO>();
 		listaLocalidad.setBounds(92, 329, 183, 28);
 		this.add(listaLocalidad);
 		
-		listaTipoContacto = new JComboBox<String>();
+		listaTipoContacto = new JComboBox<TipoContactoDTO>();
 		listaTipoContacto.setBounds(92, 370, 183, 28);
 		this.add(listaTipoContacto);
 		
@@ -127,9 +130,9 @@ public class ContactoPanel extends JPanel{
 		return txtNombre;
 	}
 
-	public JTextField getTxtApellido() 
+	public JTextField getTxtTelefono() 
 	{
-		return txtApellido;
+		return txtTelefono;
 	}
 
 	public JTextField getTxtEmail() 
@@ -157,12 +160,12 @@ public class ContactoPanel extends JPanel{
 		return txtDpto;
 	}
 
-	public JComboBox<String> getListaLocalidad() 
+	public JComboBox<LocalidadDTO> getListaLocalidades() 
 	{
 		return listaLocalidad;
 	}
 
-	public JComboBox<String> getListaTipoContacto() 
+	public JComboBox<TipoContactoDTO> getListaTipoContactos() 
 	{
 		return listaTipoContacto;
 	}
