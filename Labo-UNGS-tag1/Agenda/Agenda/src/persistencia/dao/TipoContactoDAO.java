@@ -16,7 +16,6 @@ public class TipoContactoDAO
 	private static final String insert = "INSERT INTO TipoContacto(idTipo, nombre) VALUES(?, ?)";
 	private static final String delete = "DELETE FROM TipoContacto WHERE idTipo = ?";
 	private static final String readall = "SELECT * FROM TipoContacto";
-	private static final String obtener = "SELECT * FROM TipoContacto WHERE idTipo = ?";
 	private static final Conexion conexion = Conexion.getConexion();
 	
 	public boolean insert(TipoContactoDTO tipo)
@@ -97,7 +96,7 @@ public class TipoContactoDAO
 		TipoContactoDTO tipo = null;
 		try 
 		{
-			statement = conexion.getSQLConexion().prepareStatement(obtener);
+			statement = conexion.getSQLConexion().prepareStatement("SELECT * FROM TipoContacto WHERE idTipo = "+Integer.toString(id));
 			resultSet = statement.executeQuery();
 			tipo = new TipoContactoDTO(resultSet.getInt("idTipo"), resultSet.getString("nombre"));
 			
