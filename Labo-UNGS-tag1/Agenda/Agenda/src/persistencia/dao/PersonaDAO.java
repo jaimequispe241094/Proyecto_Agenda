@@ -30,10 +30,10 @@ public class PersonaDAO
 			statement.setInt(5, persona.getAltura());
 			statement.setInt(6, persona.getPiso());
 			statement.setInt(7, persona.getDepto());
-			statement.setString(8, persona.getLocalidad().getNombre());
+			statement.setInt(8, persona.getLocalidad().getIdLocalidad());
 			statement.setString(9, persona.getEmail());
 			statement.setDate(10, persona.getCumpleaños());
-			statement.setString(11, persona.getTipoContacto().getNombre());			
+			statement.setInt(11, persona.getTipoContacto().getIdTipoContacto());			
 			
 			if(statement.executeUpdate() > 0) //Si se ejecutï¿½ devuelvo true
 				return true;
