@@ -98,8 +98,10 @@ public class TipoContactoDAO
 		{
 			statement = conexion.getSQLConexion().prepareStatement("SELECT * FROM TipoContacto WHERE idTipo = "+Integer.toString(id));
 			resultSet = statement.executeQuery();
+			while(resultSet.next())
+			{
 			tipo = new TipoContactoDTO(resultSet.getInt("idTipo"), resultSet.getString("nombre"));
-			
+			}
 		} 
 		catch (SQLException e) 
 		{

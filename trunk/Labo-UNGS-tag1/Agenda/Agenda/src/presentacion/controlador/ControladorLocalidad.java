@@ -55,7 +55,8 @@ public class ControladorLocalidad implements ActionListener{
 		else if(e.getSource() == this.local.getBtnBorrar())
 		{
 			if(this.local.getListaLocalidad().getSelectedIndex() != -1)
-			{
+			{	
+				
 				this.agenda.borrarLocalidad(localidadesGuardadas.get(local.getListaLocalidad().getSelectedIndex()));
 				this.control.actualizarDatosLocalidades();
 			}

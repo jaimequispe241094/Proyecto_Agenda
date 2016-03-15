@@ -1,5 +1,7 @@
 package presentacion.vista;
 
+import java.util.GregorianCalendar;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -107,7 +109,9 @@ public class ContactoPanel extends JPanel{
 		this.add(txtDpto);
 		txtDpto.setColumns(10);
 		
+		GregorianCalendar formato = new GregorianCalendar();
 		fechaCumpleaños = new JDateChooser();
+		fechaCumpleaños.setCalendar(formato);
 		fechaCumpleaños.setBounds(92, 166, 183, 28);
 		this.add(fechaCumpleaños);
 		
