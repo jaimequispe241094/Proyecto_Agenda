@@ -15,7 +15,6 @@ public class LocalidadDAO {
 	private static final String insert = "INSERT INTO localidad(idLocalidad, nombre) VALUES(?, ?)";
 	private static final String delete = "DELETE FROM localidad WHERE idLocalidad = ?";
 	private static final String readall = "SELECT * FROM localidad";
-	private static final String obtener = "SELECT * FROM localidad WHERE idLocalidad = ?";
 	private static final Conexion conexion = Conexion.getConexion();
 	
 	public boolean insert(LocalidadDTO localidad)
@@ -95,7 +94,7 @@ public class LocalidadDAO {
 		LocalidadDTO localidad = null;
 		try 
 		{
-			statement = conexion.getSQLConexion().prepareStatement(obtener);
+			statement = conexion.getSQLConexion().prepareStatement("SELECT * FROM localidad WHERE idLocalidad = "+Integer.toString(id));
 			resultSet = statement.executeQuery();
 			localidad = new LocalidadDTO(resultSet.getInt("idLocalidad"), resultSet.getString("nombre"));
 			
