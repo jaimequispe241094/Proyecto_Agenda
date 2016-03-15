@@ -19,7 +19,7 @@ public class Vista
 	private JButton btnReporte;
 	private JButton btnEditar;
 	private DefaultTableModel modelPersonas;
-	private  String[] nombreColumnas = {"Nombre", "Apellido","Cumpleaños","Email","Localidad","Direccion","Numero","Piso","Dpto","Tipo Contacto"};
+	private  String[] nombreColumnas = {"Nombre", "Telefono","Cumpleaños","Email","Localidad","Direccion","Numero","Piso","Dpto","Tipo Contacto"};
 	private ContactoPanel contactoPanel;
 	private LocalidadPanel localidadPanel;
 	private TipoContactoPanel tipoContactoPanel;

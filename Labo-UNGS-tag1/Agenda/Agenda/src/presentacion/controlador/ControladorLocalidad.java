@@ -2,21 +2,41 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+
+import dto.LocalidadDTO;
+import modelo.Agenda;
 import presentacion.vista.LocalidadPanel;
 
 public class ControladorLocalidad implements ActionListener{
 
 	private LocalidadPanel local;
+	private Controlador control;
+	private Agenda agenda;
+	private List<LocalidadDTO> localidadesGuardadas;
 	private int indiceModificar;
 	
-	public ControladorLocalidad(LocalidadPanel localidadPanel) 
+	public ControladorLocalidad(Controlador controlador) 
 	{
-		this.local = localidadPanel;
+		this.control = controlador;
+		this.local = control.getVista().getLocalidadPanel();
+		this.agenda = controlador.getAgenda();
 		this.local.getBtnAgregar().addActionListener(this);
 		this.local.getBtnModificar().addActionListener(this);
 		this.local.getBtnBorrar().addActionListener(this);
 		this.local.getBtnGuardar().addActionListener(this);
 		this.local.getBtnCancelar().addActionListener(this);
+	}
+	
+	public void cargarLocalidades()
+	{
+		this.local.getListaLocalidad().removeAll();
+		localidadesGuardadas = agenda.obtenerLocalidades();
+		for(int i=0; i<localidadesGuardadas.size(); i++)
+		{
+			String values = localidadesGuardadas.get(i).getNombre();
+			local.getListaLocalidad().add(values);
+		}
 	}
 	
 	@Override
@@ -26,8 +46,9 @@ public class ControladorLocalidad implements ActionListener{
 		{
 			if(this.local.getTxtNombreLocalidad().getText().length() > 0)
 			{
-				this.local.getListaLocalidad().add(local.getTxtNombreLocalidad().getText());
+				this.agenda.agregarLocalidad(new LocalidadDTO(0,local.getTxtNombreLocalidad().getText()));
 				this.local.getTxtNombreLocalidad().setText("");
+				this.control.actualizarDatosLocalidades();				
 			}
 		}	
 		
@@ -35,7 +56,8 @@ public class ControladorLocalidad implements ActionListener{
 		{
 			if(this.local.getListaLocalidad().getSelectedIndex() != -1)
 			{
-				this.local.getListaLocalidad().remove(local.getListaLocalidad().getSelectedIndex());
+				this.agenda.borrarLocalidad(localidadesGuardadas.get(local.getListaLocalidad().getSelectedIndex()));
+				this.control.actualizarDatosLocalidades();
 			}
 		}
 		

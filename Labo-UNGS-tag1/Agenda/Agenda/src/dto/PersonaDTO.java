@@ -138,7 +138,7 @@ public class PersonaDTO
 
 	public void setCumpleaños(Date cumpleaños) 
 	{
-		cumpleaños = cumpleaños;
+		this.cumpleaños = cumpleaños;
 	}
 
 	public TipoContactoDTO getTipoContacto() 
