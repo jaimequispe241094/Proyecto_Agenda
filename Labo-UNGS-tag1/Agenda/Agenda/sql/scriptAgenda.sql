@@ -1,4 +1,5 @@
 CREATE DATABASE `agenda`;
+
 USE agenda;
 CREATE TABLE `localidad` 
 (
@@ -28,8 +29,8 @@ CREATE TABLE `personas`
   `Localidad` int(11) NOT NULL,
   `Email` varchar(45) NOT NULL,
   `Cumpleaños` varchar(45) NOT NULL,
-  `TipoDeContacto` int(11) NOT NULL,  
+  `TipoContacto` int(11) NOT NULL,  
   PRIMARY KEY (`idPersona`),
   FOREIGN KEY (`Localidad`) REFERENCES localidad (`idLocalidad`),
-  FOREIGN KEY (`TipoDeContacto`) REFERENCES tipoContacto (`idTipo`)
+  FOREIGN KEY (`TipoContacto`) REFERENCES tipoContacto (`idTipo`)
 );
