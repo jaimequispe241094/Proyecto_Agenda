@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import persistencia.conexion.Conexion;
 import dto.PersonaDTO;
 
@@ -24,17 +23,16 @@ public class PersonaDAO
 			statement = conexion.getSQLConexion().prepareStatement(insert);
 			statement.setInt(1, persona.getIdPersona());
 			statement.setString(2, persona.getNombre());
-			statement.setString(3, persona.getTelefono());
-			
+			statement.setString(3, persona.getTelefono());			
 			statement.setString(4, persona.getCalle());			
 			statement.setInt(5, persona.getAltura());
 			statement.setInt(6, persona.getPiso());
 			statement.setInt(7, persona.getDepto());
 			statement.setInt(8, persona.getLocalidad().getIdLocalidad());
 			statement.setString(9, persona.getEmail());
-			statement.setDate(10, persona.getCumpleaños());
+			statement.setString(10, persona.getCumpleaños());
 			statement.setInt(11, persona.getTipoContacto().getIdTipoContacto());			
-			
+						
 			if(statement.executeUpdate() > 0) //Si se ejecutï¿½ devuelvo true
 				return true;
 		} 
@@ -84,10 +82,10 @@ public class PersonaDAO
 			
 			while(resultSet.next())
 			{
-				personas.add(new PersonaDTO(resultSet.getInt("idPersona"), resultSet.getString("Nombre"), resultSet.getString("Telefono"), resultSet.getString("Calle"), resultSet.getInt("Altura"), resultSet.getInt("Piso"), resultSet.getInt("Depto"),
-						LocalidadDAO.getLocalidadDTO(resultSet.getInt("Localidad")),
-						resultSet.getString("Email"), resultSet.getDate("Cumpleaños"),
-						TipoContactoDAO.getTipoContactoDTO(resultSet.getInt("TipoContacto"))));
+				personas.add(new PersonaDTO(resultSet.getInt("idPersona"), resultSet.getString("nombre"), resultSet.getString("telefono"), resultSet.getString("calle"), resultSet.getInt("altura"), resultSet.getInt("piso"), resultSet.getInt("depto"),
+						LocalidadDAO.getLocalidadDTO(resultSet.getInt("localidad")),
+						resultSet.getString("email"), resultSet.getString("cumpleaños"),
+						TipoContactoDAO.getTipoContactoDTO(resultSet.getInt("tipoContacto"))));
 			}
 		} 
 		catch (SQLException e) 

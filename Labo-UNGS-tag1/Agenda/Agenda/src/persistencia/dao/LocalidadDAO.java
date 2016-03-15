@@ -96,8 +96,10 @@ public class LocalidadDAO {
 		{
 			statement = conexion.getSQLConexion().prepareStatement("SELECT * FROM localidad WHERE idLocalidad = "+Integer.toString(id));
 			resultSet = statement.executeQuery();
-			localidad = new LocalidadDTO(resultSet.getInt("idLocalidad"), resultSet.getString("nombre"));
-			
+			while(resultSet.next())
+			{
+				localidad = new LocalidadDTO(resultSet.getInt("idLocalidad"), resultSet.getString("nombre"));
+			}
 		} 
 		catch (SQLException e) 
 		{

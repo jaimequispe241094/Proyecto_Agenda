@@ -2,15 +2,13 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 import java.util.List;
 import modelo.Agenda;
 import presentacion.reportes.ReporteAgenda;
 import presentacion.vista.VentanaPersona;
 import presentacion.vista.Vista;
-import dto.LocalidadDTO;
 import dto.PersonaDTO;
-import dto.TipoContactoDTO;
+
 
 public class Controlador implements ActionListener
 {
@@ -35,7 +33,7 @@ public class Controlador implements ActionListener
 			this.vista.getBtnReporte().addActionListener(this);
 			this.controladorLocalidad = new ControladorLocalidad(this);
 			this.controladorTipoContacto = new ControladorTipoContacto(this);
-			this.controladorContacto = new ControladorContacto(this.vista.getContactoPanel(), this.agenda);
+			this.controladorContacto = new ControladorContacto(this);
 			this.personas_en_tabla = null;
 		}
 		
@@ -62,7 +60,7 @@ public class Controlador implements ActionListener
 			this.controladorContacto.actualizarTipoContactos();
 		}	
 		
-		private void llenarTabla()
+		public void llenarTabla()
 		{
 			this.vista.getModelPersonas().setRowCount(0); //Para vaciar la tabla
 			this.vista.getModelPersonas().setColumnCount(0);
@@ -75,7 +73,12 @@ public class Controlador implements ActionListener
 									this.personas_en_tabla.get(i).getTelefono(),
 									this.personas_en_tabla.get(i).getCumpleaños(),
 									this.personas_en_tabla.get(i).getEmail(),
-									
+									this.personas_en_tabla.get(i).getLocalidad().getNombre(),
+									this.personas_en_tabla.get(i).getCalle(),
+									this.personas_en_tabla.get(i).getAltura(),
+									this.personas_en_tabla.get(i).getPiso(),
+									this.personas_en_tabla.get(i).getDepto(),
+									this.personas_en_tabla.get(i).getTipoContacto().getNombre()
 								};
 				this.vista.getModelPersonas().addRow(fila);
 			}
@@ -106,6 +109,7 @@ public class Controlador implements ActionListener
 			}
 			else if(e.getSource() == this.ventanaPersona.getBtnAgregarPersona())
 			{
+				/*
 				PersonaDTO nuevaPersona = new PersonaDTO
 						(	0,
 							vista.getContactoPanel().getTxtNombre().getText(), 
@@ -116,12 +120,14 @@ public class Controlador implements ActionListener
 							Integer.parseInt(vista.getContactoPanel().getTxtDpto().getText()),
 							((LocalidadDTO) vista.getContactoPanel().getListaLocalidades().getSelectedItem()),
 							vista.getContactoPanel().getTxtEmail().getText(),
-							(Date) vista.getContactoPanel().getFechaCumpleaños().getDate(),
+							vista.getContactoPanel().getFechaCumpleaños().getDate(),
 							((TipoContactoDTO) vista.getContactoPanel().getListaTipoContactos().getSelectedItem())
 						);
+				
 				this.agenda.agregarPersona(nuevaPersona);
 				this.llenarTabla();
 				this.ventanaPersona.dispose();
+				*/
 			}
 		}
 
