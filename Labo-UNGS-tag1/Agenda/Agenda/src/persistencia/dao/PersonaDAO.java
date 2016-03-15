@@ -25,9 +25,9 @@ public class PersonaDAO
 			statement.setString(2, persona.getNombre());
 			statement.setString(3, persona.getTelefono());			
 			statement.setString(4, persona.getCalle());			
-			statement.setInt(5, persona.getAltura());
-			statement.setInt(6, persona.getPiso());
-			statement.setInt(7, persona.getDepto());
+			statement.setString(5, persona.getAltura());
+			statement.setString(6, persona.getPiso());
+			statement.setString(7, persona.getDepto());
 			statement.setInt(8, persona.getLocalidad().getIdLocalidad());
 			statement.setString(9, persona.getEmail());
 			statement.setString(10, persona.getCumpleaños());
@@ -82,7 +82,7 @@ public class PersonaDAO
 			
 			while(resultSet.next())
 			{
-				personas.add(new PersonaDTO(resultSet.getInt("idPersona"), resultSet.getString("nombre"), resultSet.getString("telefono"), resultSet.getString("calle"), resultSet.getInt("altura"), resultSet.getInt("piso"), resultSet.getInt("depto"),
+				personas.add(new PersonaDTO(resultSet.getInt("idPersona"), resultSet.getString("nombre"), resultSet.getString("telefono"), resultSet.getString("calle"), resultSet.getString("altura"), resultSet.getString("piso"), resultSet.getString("depto"),
 						LocalidadDAO.getLocalidadDTO(resultSet.getInt("localidad")),
 						resultSet.getString("email"), resultSet.getString("cumpleaños"),
 						TipoContactoDAO.getTipoContactoDTO(resultSet.getInt("tipoContacto"))));
@@ -104,25 +104,22 @@ public class PersonaDAO
 		PreparedStatement statement;
 		try 
 		{
-			//String modUptade = "update persona set nombre='" + persona.getNombre()+ "'," + " where idLocalidad="+persona.getIdPersona();
-			//calle, altura, piso, depto, localidad, email, cumpleaños, tipoContacto
-			String modUptade = "update persona set nombre='" + persona.getNombre()
-					+"'," +"telefono=" + persona.getTelefono()
-					+"'," +"calle=" + persona.getCalle()
+			String modUptade = "update personas set nombre='" + persona.getNombre()
+					+"'," +"telefono='" + persona.getTelefono()
+					+"'," +"calle='" + persona.getCalle()
 					+"'," +"altura=" + persona.getAltura()
-					+"'," +"piso=" + persona.getPiso()
-					+"'," +"depto=" + persona.getDepto()
-					+"'," +"localidad=" + persona.getLocalidad()
-					+"'," +"email=" + persona.getEmail()
-					+"'," +"cumpleaños=" + persona.getCumpleaños()
-					+"'," +"tipoContacto=" + persona.getTipoContacto()
-					+"'" + " where idLocalidad="+persona.getIdPersona();
-			
-			
+					+"," +"piso=" + persona.getPiso()
+					+"," +"depto=" + persona.getDepto()
+					+"," +"localidad=" + persona.getLocalidad().getIdLocalidad()
+					+"," +"email='" + persona.getEmail()
+					+"'," +"cumpleaños='" + persona.getCumpleaños()
+					+"'," +"tipoContacto=" + persona.getTipoContacto().getIdTipoContacto()
+					+"" + " where idPersona="+persona.getIdPersona();
 			
 			statement = conexion.getSQLConexion().prepareStatement(modUptade);
-			if(statement.executeUpdate() > 0) //Si se ejecutï¿½ devuelvo true
+			if(statement.executeUpdate() > 0) {//Si se ejecutï¿½ devuelvo true
 				return true;
+			}
 		} 
 		catch (SQLException e) 
 		{

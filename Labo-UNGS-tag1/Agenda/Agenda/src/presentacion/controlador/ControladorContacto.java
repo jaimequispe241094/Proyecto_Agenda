@@ -23,8 +23,9 @@ public class ControladorContacto implements ActionListener{
 		this.control = control;
 		this.contacto = control.getVista().getContactoPanel();
 		this.agenda = control.getAgenda();
+		this.contacto.getBtnAgregar().addActionListener(this);
 		this.contacto.getBtnGuardar().addActionListener(this);
-		
+		this.contacto.getBtnCancelar().addActionListener(this);
 	}
 	
 	public void actualizarLocalidades()
@@ -51,58 +52,61 @@ public class ControladorContacto implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		if(e.getSource() == contacto.getBtnGuardar())
+		if(e.getSource() == contacto.getBtnAgregar())
 		{			
-			String nombre = contacto.getTxtNombre().getText();			
-            String telefono = this.contacto.getTxtTelefono().getText();
-			String email = this.contacto.getTxtEmail().getText();
-			String calle = this.contacto.getTxtDireccion().getText();			
-            String altura = this.contacto.getTxtNumero().getText();
-            String piso = this.contacto.getTxtPiso().getText();
-            String depto = this.contacto.getTxtDpto().getText();           
-            DateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");
-            String cumpleaños = fecha.format(contacto.getFechaCumpleaños().getDate());        
-            LocalidadDTO localidad= (LocalidadDTO) this.contacto.getListaLocalidades().getSelectedItem();
-            TipoContactoDTO tipo = (TipoContactoDTO) this.contacto.getListaTipoContactos().getSelectedItem();
-        
-            if(validarCampoVacios(nombre, telefono, calle, email) && validarObjetos(localidad, tipo) && validarNumeros(altura, piso, depto))
-            {            	
-            	 PersonaDTO persona = new PersonaDTO(0,nombre,telefono,calle,Integer.parseInt(altura),Integer.parseInt(piso),Integer.parseInt(depto),localidad,email,cumpleaños,tipo);
-            	 this.agenda.agregarPersona(persona);
+			PersonaDTO personaDTO = mapeoPersonaDTO();
+     
+            if(this.validacion(personaDTO))
+            {                  	
+            	 this.agenda.agregarPersona(personaDTO);
                  this.vaciarCampos();
                  this.control.llenarTabla();
             }
 		}
+		
+		else if(e.getSource() == this.contacto.getBtnCancelar())
+		{
+			this.visualizarBotonesEdicion(false);
+			this.vaciarCampos();
+		}
         
+		else if(e.getSource() == this.contacto.getBtnGuardar())
+		{
+			PersonaDTO personaDTO = mapeoPersonaDTO();
+            int idSeleccionado = this.control.contactoSeleccionado().getIdPersona();
+            personaDTO.setIdPersona(idSeleccionado);
+            
+            if(this.validacion(personaDTO))
+            {                 	 
+            	 this.agenda.editarPersona(personaDTO);
+                 this.vaciarCampos();
+                 this.visualizarBotonesEdicion(false);
+                 this.control.llenarTabla();
+            }
+		}
 	}
 	
-	public	boolean validarCampoVacios(String nombre,String telefono,String calle,String email)
+	public	boolean validacion(PersonaDTO p)
 	{
-		if (nombre.length()<= 0 ||telefono.length()<=0 || calle.length()<=0 || email.length()<=0 )
+		boolean ret = true;
+		if (p.getNombre().length()<= 0 ||p.getTelefono().length()<=0 || p.getCalle().length()<=0 || p.getEmail().length()<=0 )
 		{
 			JOptionPane.showMessageDialog(null, "No deben haber campos vacios", "Datos Incompletos", JOptionPane.INFORMATION_MESSAGE);
-			return false;
+			ret = false;
 		}
-		return true;
-	}
 	
-	public boolean validarObjetos(LocalidadDTO localidad,TipoContactoDTO tipo){
-		if(localidad == null || tipo == null)
+		if(p.getLocalidad() == null || p.getTipoContacto() == null)
 		{
 			JOptionPane.showMessageDialog(null, "Debe ingreser una Localidad y/o Tipo De Contacto", "Datos Incompletos", JOptionPane.INFORMATION_MESSAGE);
-			return false;
+			ret = false;
 		}
-		return true;
-	}
 	
-	public boolean validarNumeros(String altura,String piso,String depto)
-	{
-		if( !esNumero(altura) || !esNumero(piso) || !esNumero(depto))
+		if( !esNumero(p.getAltura()) || !esNumero(p.getPiso()) || !esNumero(p.getDepto()) || !esNumero(p.getTelefono()))
 		{
 			JOptionPane.showMessageDialog(null, "Debe ingreser valores numericos donde corresponda", "Datos Erroneos", JOptionPane.INFORMATION_MESSAGE);
-			return false;
+			ret = false;
 		}
-		return true;
+		return ret;
 	}		
 	
 	private boolean esNumero(String valor)
@@ -126,7 +130,33 @@ public class ControladorContacto implements ActionListener{
 		this.contacto.getTxtEmail().setText("");
 		this.contacto.getTxtNumero().setText("");
 		this.contacto.getTxtPiso().setText("");
-		this.contacto.getTxtDpto().setText("");
+		this.contacto.getTxtDepto().setText("");
+	}
+
+
+	
+	public PersonaDTO mapeoPersonaDTO()
+	{
+		String nombre = contacto.getTxtNombre().getText();			
+        String telefono = this.contacto.getTxtTelefono().getText();
+		String email = this.contacto.getTxtEmail().getText();
+		String calle = this.contacto.getTxtDireccion().getText();			
+        String altura = this.contacto.getTxtNumero().getText();
+        String piso = this.contacto.getTxtPiso().getText();
+        String depto = this.contacto.getTxtDepto().getText();           
+        DateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");
+        String cumpleaños = fecha.format(contacto.getFechaCumpleaños().getDate());        
+        LocalidadDTO localidad= (LocalidadDTO) this.contacto.getListaLocalidades().getSelectedItem();
+        TipoContactoDTO tipo = (TipoContactoDTO) this.contacto.getListaTipoContactos().getSelectedItem();
+        
+        return new PersonaDTO(0, nombre, telefono, calle, altura, piso, depto, localidad, email, cumpleaños, tipo);
+	}	
+	
+	public void visualizarBotonesEdicion(boolean valor)
+	{
+		this.contacto.getBtnCancelar().setVisible(valor);
+		this.contacto.getBtnGuardar().setVisible(valor);
+		this.contacto.getBtnAgregar().setVisible(!valor);
 	}
 
 }

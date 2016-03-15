@@ -22,7 +22,9 @@ public class ContactoPanel extends JPanel{
 	private JTextField txtNumero;
 	private JTextField txtPiso;
 	private JTextField txtDpto;
+	private JButton btnAgregar;
 	private JButton btnGuardar;
+	private JButton btnCancelar;
 	private JComboBox<LocalidadDTO> listaLocalidad;
 	private JComboBox<TipoContactoDTO> listaTipoContacto;
 	private JDateChooser fechaCumpleaños;
@@ -96,16 +98,19 @@ public class ContactoPanel extends JPanel{
 		
 		txtNumero = new JTextField();
 		txtNumero.setBounds(92, 251, 183, 28);
+		txtNumero.setToolTipText("Ingrese solo numeros");
 		this.add(txtNumero);
 		txtNumero.setColumns(10);
 		
 		txtPiso = new JTextField();
 		txtPiso.setBounds(92, 290, 57, 28);
+		txtPiso.setToolTipText("Ingrese solo numeros");
 		this.add(txtPiso);
 		txtPiso.setColumns(10);
 				
 		txtDpto = new JTextField();
 		txtDpto.setBounds(218, 290, 57, 28);
+		txtDpto.setToolTipText("Ingrese solo numeros");
 		this.add(txtDpto);
 		txtDpto.setColumns(10);
 		
@@ -123,9 +128,20 @@ public class ContactoPanel extends JPanel{
 		listaTipoContacto.setBounds(92, 370, 183, 28);
 		this.add(listaTipoContacto);
 		
+		btnAgregar = new JButton("Agregar");
+		btnAgregar.setBounds(81, 430,120, 52);
+		this.add(btnAgregar);
+		
 		btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(81, 430,120, 52);
+		btnGuardar.setBounds(25, 430, 103, 48);
+		btnGuardar.setVisible(false);
 		this.add(btnGuardar);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(165, 430, 103, 48);
+		btnCancelar.setVisible(false);
+		this.add(btnCancelar);
+		
 	}
 
 
@@ -159,7 +175,7 @@ public class ContactoPanel extends JPanel{
 		return txtPiso;
 	}
 
-	public JTextField getTxtDpto() 
+	public JTextField getTxtDepto() 
 	{
 		return txtDpto;
 	}
@@ -179,9 +195,18 @@ public class ContactoPanel extends JPanel{
 		return fechaCumpleaños;
 	}
 
+	public JButton getBtnAgregar() 
+	{
+		return btnAgregar;
+	}
+	
 	public JButton getBtnGuardar() 
 	{
 		return btnGuardar;
 	}
 	
+	public JButton getBtnCancelar() 
+	{
+		return btnCancelar;
+	}
 }
