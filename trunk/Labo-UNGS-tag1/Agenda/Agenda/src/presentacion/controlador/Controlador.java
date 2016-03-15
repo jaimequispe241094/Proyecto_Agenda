@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import modelo.Agenda;
 import presentacion.reportes.ReporteAgenda;
-import presentacion.vista.VentanaPersona;
 import presentacion.vista.Vista;
 import dto.PersonaDTO;
 
@@ -16,7 +15,6 @@ public class Controlador implements ActionListener
 {
 		private Vista vista;
 		private List<PersonaDTO> personas_en_tabla;
-		private VentanaPersona ventanaPersona; 
 		private Agenda agenda;
 		private ControladorLocalidad controladorLocalidad;
 		private ControladorTipoContacto controladorTipoContacto;
@@ -26,7 +24,6 @@ public class Controlador implements ActionListener
 		{
 			this.vista = vista;
 			this.agenda = agenda;
-			this.vista.getBtnAgregar().addActionListener(this);
 			this.vista.getBtnBorrar().addActionListener(this);
 			this.vista.getBtnReporte().addActionListener(this);
 			this.vista.getBtnEditar().addActionListener(this);
@@ -82,12 +79,7 @@ public class Controlador implements ActionListener
 		
 		public void actionPerformed(ActionEvent e) 
 		{
-			if(e.getSource() == this.vista.getBtnAgregar())
-			{
-				this.ventanaPersona = new VentanaPersona(this);
-			}
-			
-			else if(e.getSource() == this.vista.getBtnBorrar())
+			if(e.getSource() == this.vista.getBtnBorrar())
 			{
 				int[] filas_seleccionadas = this.vista.getTablaPersonas().getSelectedRows();
 				for (int fila:filas_seleccionadas)
@@ -123,10 +115,6 @@ public class Controlador implements ActionListener
 			{				
 				ReporteAgenda reporte = new ReporteAgenda(agenda.obtenerPersonas());
 				reporte.mostrar();				
-			}
-			else if(e.getSource() == this.ventanaPersona.getBtnAgregarPersona())
-			{
-				
 			}
 			
 		}

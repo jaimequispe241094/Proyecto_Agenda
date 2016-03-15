@@ -42,14 +42,25 @@ public class LocalidadDAO {
 	public boolean delete(LocalidadDTO localidad_a_eliminar)
 	{
 		PreparedStatement statement;
+		PreparedStatement statement_dos;
+		ResultSet result;
 		int chequeoUpdate=0;
 		try 
-		{
-			statement = conexion.getSQLConexion().prepareStatement(delete);
-			statement.setString(1, Integer.toString(localidad_a_eliminar.getIdLocalidad()));
-			chequeoUpdate = statement.executeUpdate();
-			if(chequeoUpdate > 0) //Si se ejecut� devuelvo true
-				return true;
+		{	
+			int idLocalidad = localidad_a_eliminar.getIdLocalidad();
+			String join = "SELECT * FROM personas p, localidad l WHERE p.localidad = " + idLocalidad;
+			statement_dos = conexion.getSQLConexion().prepareStatement(join); 
+			result = statement_dos.executeQuery();
+			if(!result.next())
+			{
+				statement = conexion.getSQLConexion().prepareStatement(delete);			
+				statement.setString(1, Integer.toString(idLocalidad));
+				chequeoUpdate = statement.executeUpdate();
+				if(chequeoUpdate > 0){ //Si se ejecut� devuelvo true
+					return true;
+				}
+			}
+			return false;
 		} 
 		catch (SQLException e) 
 		{

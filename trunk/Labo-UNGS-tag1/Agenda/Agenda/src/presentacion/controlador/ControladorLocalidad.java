@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import dto.LocalidadDTO;
 import modelo.Agenda;
 import presentacion.vista.LocalidadPanel;
@@ -56,9 +58,13 @@ public class ControladorLocalidad implements ActionListener{
 		{
 			if(this.local.getListaLocalidad().getSelectedIndex() != -1)
 			{	
-				
-				this.agenda.borrarLocalidad(localidadesGuardadas.get(local.getListaLocalidad().getSelectedIndex()));
-				this.control.actualizarDatosLocalidades();
+				LocalidadDTO localidad = localidadesGuardadas.get(local.getListaLocalidad().getSelectedIndex());
+				if(this.agenda.borrarLocalidad(localidad))
+				{
+					this.control.actualizarDatosLocalidades();
+				} else {
+					JOptionPane.showMessageDialog(null, "¡Usted no puede borrar este elemento porque esta en uso!", "ERROR AL INTENTAR ELIMINAR ELEMENTO", JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		}
 		
