@@ -53,8 +53,7 @@ public class ControladorContacto implements ActionListener{
 	{
 		if(e.getSource() == contacto.getBtnAgregar())
 		{			
-			PersonaDTO personaDTO = mapeoPersonaDTO();
-     
+			PersonaDTO personaDTO = mapeoPersonaDTO();     
             if(this.validacion(personaDTO))
             {                  	
             	 this.agenda.agregarPersona(personaDTO);
@@ -74,7 +73,6 @@ public class ControladorContacto implements ActionListener{
 			PersonaDTO personaDTO = mapeoPersonaDTO();
             int idSeleccionado = this.control.contactoSeleccionado().getIdPersona();
             personaDTO.setIdPersona(idSeleccionado);
-            
             if(this.validacion(personaDTO))
             {                 	 
             	 this.agenda.editarPersona(personaDTO);
@@ -83,6 +81,41 @@ public class ControladorContacto implements ActionListener{
                  this.control.llenarTabla();
             }
 		}
+	}
+	
+	public PersonaDTO mapeoPersonaDTO()
+	{
+		String nombre = contacto.getTxtNombre().getText();			
+        String telefono = this.contacto.getTxtTelefono().getText();
+		String email = this.contacto.getTxtEmail().getText();
+		String calle = this.contacto.getTxtDireccion().getText();			
+        String altura = this.contacto.getTxtNumero().getText();
+        String piso = this.contacto.getTxtPiso().getText();
+        String depto = this.contacto.getTxtDepto().getText();           
+        DateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");
+        String cumpleaños = fecha.format(contacto.getFechaCumpleaños().getDate());        
+        LocalidadDTO localidad= (LocalidadDTO) this.contacto.getListaLocalidades().getSelectedItem();
+        TipoContactoDTO tipo = (TipoContactoDTO) this.contacto.getListaTipoContactos().getSelectedItem();
+        
+        return new PersonaDTO(0, nombre, telefono, calle, altura, piso, depto, localidad, email, cumpleaños, tipo);
+	}	
+	
+	public void visualizarBotonesEdicion(boolean valor)
+	{
+		this.contacto.getBtnCancelar().setVisible(valor);
+		this.contacto.getBtnGuardar().setVisible(valor);
+		this.contacto.getBtnAgregar().setVisible(!valor);
+	}
+
+	public void vaciarCampos()
+	{
+		this.contacto.getTxtNombre().setText("");
+		this.contacto.getTxtTelefono().setText("");
+		this.contacto.getTxtDireccion().setText("");
+		this.contacto.getTxtEmail().setText("");
+		this.contacto.getTxtNumero().setText("");
+		this.contacto.getTxtPiso().setText("");
+		this.contacto.getTxtDepto().setText("");
 	}
 	
 	public	boolean validacion(PersonaDTO p)
@@ -119,43 +152,5 @@ public class ControladorContacto implements ActionListener{
 		{
 			return false;
 		}
-	}
-	
-	public void vaciarCampos()
-	{
-		this.contacto.getTxtNombre().setText("");
-		this.contacto.getTxtTelefono().setText("");
-		this.contacto.getTxtDireccion().setText("");
-		this.contacto.getTxtEmail().setText("");
-		this.contacto.getTxtNumero().setText("");
-		this.contacto.getTxtPiso().setText("");
-		this.contacto.getTxtDepto().setText("");
-	}
-
-
-	
-	public PersonaDTO mapeoPersonaDTO()
-	{
-		String nombre = contacto.getTxtNombre().getText();			
-        String telefono = this.contacto.getTxtTelefono().getText();
-		String email = this.contacto.getTxtEmail().getText();
-		String calle = this.contacto.getTxtDireccion().getText();			
-        String altura = this.contacto.getTxtNumero().getText();
-        String piso = this.contacto.getTxtPiso().getText();
-        String depto = this.contacto.getTxtDepto().getText();           
-        DateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");
-        String cumpleaños = fecha.format(contacto.getFechaCumpleaños().getDate());        
-        LocalidadDTO localidad= (LocalidadDTO) this.contacto.getListaLocalidades().getSelectedItem();
-        TipoContactoDTO tipo = (TipoContactoDTO) this.contacto.getListaTipoContactos().getSelectedItem();
-        
-        return new PersonaDTO(0, nombre, telefono, calle, altura, piso, depto, localidad, email, cumpleaños, tipo);
 	}	
-	
-	public void visualizarBotonesEdicion(boolean valor)
-	{
-		this.contacto.getBtnCancelar().setVisible(valor);
-		this.contacto.getBtnGuardar().setVisible(valor);
-		this.contacto.getBtnAgregar().setVisible(!valor);
-	}
-
 }

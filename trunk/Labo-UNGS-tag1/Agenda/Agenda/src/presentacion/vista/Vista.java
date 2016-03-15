@@ -23,13 +23,11 @@ public class Vista
 	private LocalidadPanel localidadPanel;
 	private TipoContactoPanel tipoContactoPanel;
 	
-	
 	public Vista() 
 	{
 		super();
 		initialize();
 	}
-
 
 	private void initialize() 
 	{
@@ -105,7 +103,6 @@ public class Vista
 		btnReporte = new JButton("Reporte");
 		btnReporte.setBounds(1046, 584, 111, 51);
 		panel.add(btnReporte);
-		
 	}
 	
 	private void cargarLookAndFeel() 
@@ -125,8 +122,7 @@ public class Vista
 	public void show()
 	{
 		this.frmAgenda.setVisible(true);
-	}
-	
+	}	
 
 	public JButton getBtnBorrar() 
 	{
@@ -156,8 +152,7 @@ public class Vista
 	public String[] getNombreColumnas() 
 	{
 		return nombreColumnas;
-	}
-	
+	}	
 	
 	public ContactoPanel getContactoPanel()
 	{

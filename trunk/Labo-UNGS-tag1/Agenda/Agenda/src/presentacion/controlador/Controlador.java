@@ -10,7 +10,6 @@ import presentacion.reportes.ReporteAgenda;
 import presentacion.vista.Vista;
 import dto.PersonaDTO;
 
-
 public class Controlador implements ActionListener
 {
 		private Vista vista;
@@ -95,7 +94,6 @@ public class Controlador implements ActionListener
 				if(fila != -1)
 				{
 					PersonaDTO persona = this.personas_en_tabla.get(fila);
-					
 					this.vista.getContactoPanel().getTxtNombre().setText(persona.getNombre());
 					this.vista.getContactoPanel().getTxtTelefono().setText(persona.getTelefono());
 					this.vista.getContactoPanel().getTxtEmail().setText(persona.getEmail());
@@ -105,8 +103,7 @@ public class Controlador implements ActionListener
 					this.vista.getContactoPanel().getTxtDepto().setText(String.valueOf(persona.getDepto()));
 					this.setearCalendario_CumpleañosContacto(persona);
 					this.vista.getContactoPanel().getListaLocalidades().setSelectedItem(persona.getLocalidad());
-					this.vista.getContactoPanel().getListaTipoContactos().setSelectedItem(persona.getTipoContacto());
-					
+					this.vista.getContactoPanel().getListaTipoContactos().setSelectedItem(persona.getTipoContacto());					
 					this.controladorContacto.visualizarBotonesEdicion(true);
 				}
 			}
@@ -115,8 +112,7 @@ public class Controlador implements ActionListener
 			{				
 				ReporteAgenda reporte = new ReporteAgenda(agenda.obtenerPersonas());
 				reporte.mostrar();				
-			}
-			
+			}			
 		}
 		
 	public PersonaDTO contactoSeleccionado()
@@ -140,7 +136,7 @@ public class Controlador implements ActionListener
 	
 	public List<PersonaDTO> getPersonas_en_tabla() {
 			return personas_en_tabla;
-		}
+	}
 
 	public Vista getVista() 
 	{
@@ -151,5 +147,4 @@ public class Controlador implements ActionListener
 	{
 		return agenda;
 	}
-
 }

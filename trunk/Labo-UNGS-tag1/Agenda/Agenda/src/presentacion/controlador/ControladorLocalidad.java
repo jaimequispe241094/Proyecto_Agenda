@@ -3,9 +3,7 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-
 import javax.swing.JOptionPane;
-
 import dto.LocalidadDTO;
 import modelo.Agenda;
 import presentacion.vista.LocalidadPanel;
@@ -98,7 +96,7 @@ public class ControladorLocalidad implements ActionListener{
 		}
 	}
 	
-	public void mostrarUnGrupoDeBotones(boolean verABM,boolean verEdicion)
+	private void mostrarUnGrupoDeBotones(boolean verABM,boolean verEdicion)
 	{
 		local.getBtnAgregar().setVisible(verABM);
 		local.getBtnBorrar().setVisible(verABM);
