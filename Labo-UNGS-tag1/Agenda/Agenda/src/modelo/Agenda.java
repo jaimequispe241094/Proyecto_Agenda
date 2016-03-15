@@ -56,14 +56,14 @@ public class Agenda
 		persona.delete(persona_a_eliminar);
 	}
 	
-	public void borrarLocalidad(LocalidadDTO localidad_a_eliminar)
+	public boolean borrarLocalidad(LocalidadDTO localidad_a_eliminar)
 	{
-		localidad.delete(localidad_a_eliminar);
+		return localidad.delete(localidad_a_eliminar);
 	}
 	
-	public void borrarTipoContacto(TipoContactoDTO tipo_a_eliminar)
+	public boolean borrarTipoContacto(TipoContactoDTO tipo_a_eliminar)
 	{
-		tipoContacto.delete(tipo_a_eliminar);
+		return tipoContacto.delete(tipo_a_eliminar);
 	}
 	
 	public List<PersonaDTO> obtenerPersonas()

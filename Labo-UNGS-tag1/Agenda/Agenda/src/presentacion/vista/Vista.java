@@ -14,7 +14,6 @@ public class Vista
 {
 	private JFrame frmAgenda;
 	private JTable tablaPersonas;
-	private JButton btnAgregar;
 	private JButton btnBorrar;
 	private JButton btnReporte;
 	private JButton btnEditar;
@@ -36,8 +35,8 @@ public class Vista
 	{
 		this.cargarLookAndFeel();
 		frmAgenda = new JFrame();
-		frmAgenda.setTitle("Agenda");
 		frmAgenda.setResizable(false);
+		frmAgenda.setTitle("Agenda");
 		frmAgenda.setBounds(65, 16, 1250, 691);
 		frmAgenda.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmAgenda.getContentPane().setLayout(null);
@@ -93,22 +92,18 @@ public class Vista
 		tabbedPane.addTab("TipoContacto", null, tipoContactoPanel, null);
 		tipoContactoPanel.setLayout(null);
 		
-		btnAgregar = new JButton("Agregar");
-		btnAgregar.setBounds(365, 585, 111, 51);
-		panel.add(btnAgregar);
-		
 		btnEditar = new JButton("Editar");
-		btnEditar.setBounds(607, 585, 111, 51);
+		btnEditar.setBounds(468, 584, 111, 51);
 		btnEditar.setToolTipText("Seleccione un contacto de la lista");
 		panel.add(btnEditar);
 		
 		btnBorrar = new JButton("Borrar");
-		btnBorrar.setBounds(821, 585, 111, 51);
+		btnBorrar.setBounds(758, 584, 111, 51);
 		btnBorrar.setToolTipText("Seleccione un contacto de la lista");
 		panel.add(btnBorrar);
 		
 		btnReporte = new JButton("Reporte");
-		btnReporte.setBounds(1039, 585, 111, 51);
+		btnReporte.setBounds(1046, 584, 111, 51);
 		panel.add(btnReporte);
 		
 	}
@@ -132,10 +127,6 @@ public class Vista
 		this.frmAgenda.setVisible(true);
 	}
 	
-	public JButton getBtnAgregar() 
-	{
-		return btnAgregar;
-	}
 
 	public JButton getBtnBorrar() 
 	{

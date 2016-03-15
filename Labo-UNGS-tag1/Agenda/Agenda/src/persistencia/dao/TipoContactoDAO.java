@@ -43,15 +43,26 @@ public class TipoContactoDAO
 	public boolean delete(TipoContactoDTO tipo_a_eliminar)
 	{
 		PreparedStatement statement;
+		PreparedStatement statement_dos;
+		ResultSet result;
 		int chequeoUpdate=0;
 		try 
-		{
-			statement = conexion.getSQLConexion().prepareStatement(delete);
-			statement.setString(1, Integer.toString(tipo_a_eliminar.getIdTipoContacto()));
-			chequeoUpdate = statement.executeUpdate();
-			if(chequeoUpdate > 0) //Si se ejecut� devuelvo true
-				return true;
-		} 
+		{	
+			int idtipoContacto = tipo_a_eliminar.getIdTipoContacto();
+			String join = "SELECT * FROM personas p, tipocontacto t WHERE p.tipoContacto = " + idtipoContacto;
+			statement_dos = conexion.getSQLConexion().prepareStatement(join); 
+			result = statement_dos.executeQuery();
+			if(!result.next())
+			{
+				statement = conexion.getSQLConexion().prepareStatement(delete);			
+				statement.setString(1, Integer.toString(idtipoContacto));
+				chequeoUpdate = statement.executeUpdate();
+				if(chequeoUpdate > 0){ //Si se ejecut� devuelvo true
+					return true;
+				}
+			}
+			return false;
+		}
 		catch (SQLException e) 
 		{
 			e.printStackTrace();

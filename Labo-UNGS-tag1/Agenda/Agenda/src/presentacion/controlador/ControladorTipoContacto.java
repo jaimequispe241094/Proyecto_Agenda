@@ -3,6 +3,9 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+
+import javax.swing.JOptionPane;
+
 import dto.TipoContactoDTO;
 import modelo.Agenda;
 import presentacion.vista.TipoContactoPanel;
@@ -56,8 +59,13 @@ public class ControladorTipoContacto implements ActionListener
 		{
 			if(this.tipoContacto.getListaTipoContactos().getSelectedIndex() != -1)
 			{
-				this.agenda.borrarTipoContacto(tipoContactosGuardados.get(tipoContacto.getListaTipoContactos().getSelectedIndex()));
-				this.control.actualizarDatosTipoContactos();
+				TipoContactoDTO tipo = tipoContactosGuardados.get(tipoContacto.getListaTipoContactos().getSelectedIndex());
+				if(this.agenda.borrarTipoContacto(tipo))
+				{
+					this.control.actualizarDatosTipoContactos();
+				} else{
+					JOptionPane.showMessageDialog(null, "¡Usted no puede borrar este elemento porque esta en uso!", "ERROR AL INTENTAR ELIMINAR ELEMENTO", JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		}
 		

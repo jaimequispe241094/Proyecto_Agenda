@@ -48,7 +48,6 @@ public class ControladorContacto implements ActionListener{
 		}
 	}
 	
-	
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
