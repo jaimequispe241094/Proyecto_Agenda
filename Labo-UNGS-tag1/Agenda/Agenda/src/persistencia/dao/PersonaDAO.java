@@ -100,4 +100,40 @@ public class PersonaDAO
 		}
 		return personas;
 	}
+	
+	public boolean update(PersonaDTO persona)
+	{
+		PreparedStatement statement;
+		try 
+		{
+			//String modUptade = "update persona set nombre='" + persona.getNombre()+ "'," + " where idLocalidad="+persona.getIdPersona();
+			//calle, altura, piso, depto, localidad, email, cumpleaños, tipoContacto
+			String modUptade = "update persona set nombre='" + persona.getNombre()
+					+"'," +"telefono=" + persona.getTelefono()
+					+"'," +"calle=" + persona.getCalle()
+					+"'," +"altura=" + persona.getAltura()
+					+"'," +"piso=" + persona.getPiso()
+					+"'," +"depto=" + persona.getDepto()
+					+"'," +"localidad=" + persona.getLocalidad()
+					+"'," +"email=" + persona.getEmail()
+					+"'," +"cumpleaños=" + persona.getCumpleaños()
+					+"'," +"tipoContacto=" + persona.getTipoContacto()
+					+"'" + " where idLocalidad="+persona.getIdPersona();
+			
+			
+			
+			statement = conexion.getSQLConexion().prepareStatement(modUptade);
+			if(statement.executeUpdate() > 0) //Si se ejecutï¿½ devuelvo true
+				return true;
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally //Se ejecuta siempre
+		{
+			conexion.cerrarConexion();
+		}
+		return false;
+	}
 }

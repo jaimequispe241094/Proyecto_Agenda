@@ -110,5 +110,26 @@ public class LocalidadDAO {
 		return localidad;
 	
 	}
+	
+	public boolean update(LocalidadDTO localidad)
+	{
+		PreparedStatement statement;
+		try 
+		{
+			String modUptade = "update localidad set nombre='" + localidad.getNombre()+ "'" + " where idLocalidad="+localidad.getIdLocalidad();
+			statement = conexion.getSQLConexion().prepareStatement(modUptade);
+			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true
+				return true;
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally //Se ejecuta siempre
+		{
+			conexion.cerrarConexion();
+		}
+		return false;
+	}
 
 }

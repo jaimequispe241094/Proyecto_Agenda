@@ -110,7 +110,27 @@ public class TipoContactoDAO
 			conexion.cerrarConexion();
 		}
 		return tipo;
+	}
 	
+	public boolean update(TipoContactoDTO tipo)
+	{
+		PreparedStatement statement;
+		try 
+		{
+			String modUptade = "update tipoContacto set nombre='" + tipo.getNombre()+ "'" + " where idTipo="+tipo.getIdTipoContacto();
+			statement = conexion.getSQLConexion().prepareStatement(modUptade);
+			if(statement.executeUpdate() > 0) //Si se ejecut� devuelvo true
+				return true;
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally //Se ejecuta siempre
+		{
+			conexion.cerrarConexion();
+		}
+		return false;
 	}
 	
 }
