@@ -9,7 +9,6 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class LocalidadPanel extends JPanel
 {
-
 	private JTextField txtNombreLocalidad;
 	private List listaLocalidad;
 	private JButton btnAgregar;
@@ -22,7 +21,6 @@ public class LocalidadPanel extends JPanel
 	{
 		iniciar();
 	}
-	
 	
 	public void iniciar()
 	{
@@ -60,9 +58,7 @@ public class LocalidadPanel extends JPanel
 		btnCancelar.setBounds(157, 425, 106, 47);
 		btnCancelar.setVisible(false);
 		this.add(btnCancelar);
-		
 	}
-
 
 	public JTextField getTxtNombreLocalidad() 
 	{
@@ -98,5 +94,4 @@ public class LocalidadPanel extends JPanel
 	{
 		return btnCancelar;
 	}	
-	
 }

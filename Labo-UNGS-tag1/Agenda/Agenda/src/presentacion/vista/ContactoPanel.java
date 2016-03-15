@@ -1,14 +1,12 @@
 package presentacion.vista;
 
 import java.util.GregorianCalendar;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
-
 import dto.LocalidadDTO;
 import dto.TipoContactoDTO;
 

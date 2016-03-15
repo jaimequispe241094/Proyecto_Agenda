@@ -107,5 +107,4 @@ public class ControladorTipoContacto implements ActionListener
 		tipoContacto.getBtnGuardar().setVisible(verEdicion);
 		tipoContacto.getBtnCancelar().setVisible(verEdicion);	
 	}
-
 }

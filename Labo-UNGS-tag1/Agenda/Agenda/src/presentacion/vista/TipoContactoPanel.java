@@ -60,7 +60,6 @@ public class TipoContactoPanel extends JPanel
 		this.add(btnCancelar);
 	}
 
-
 	public JTextField getTxtTipoContacto()
 	{
 		return txtTipoContacto;
@@ -94,6 +93,5 @@ public class TipoContactoPanel extends JPanel
 	public JButton getBtnCancelar() 
 	{
 		return btnCancelar;
-	}
-	
+	}	
 }
