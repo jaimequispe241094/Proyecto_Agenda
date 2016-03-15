@@ -84,7 +84,7 @@ public class Vista
 		contactoPanel = new ContactoPanel();
 		tabbedPane.addTab("Contacto", null, contactoPanel, null);
 		contactoPanel.setLayout(null);
-		
+
 		localidadPanel = new LocalidadPanel();
 		tabbedPane.addTab("Localidad", null, localidadPanel, null);
 		localidadPanel.setLayout(null);
@@ -99,10 +99,12 @@ public class Vista
 		
 		btnEditar = new JButton("Editar");
 		btnEditar.setBounds(607, 585, 111, 51);
+		btnEditar.setToolTipText("Seleccione un contacto de la lista");
 		panel.add(btnEditar);
 		
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.setBounds(821, 585, 111, 51);
+		btnBorrar.setToolTipText("Seleccione un contacto de la lista");
 		panel.add(btnBorrar);
 		
 		btnReporte = new JButton("Reporte");

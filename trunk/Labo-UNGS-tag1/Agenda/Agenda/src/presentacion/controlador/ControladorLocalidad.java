@@ -17,7 +17,7 @@ public class ControladorLocalidad implements ActionListener{
 	private int indiceModificar;
 	
 	public ControladorLocalidad(Controlador controlador) 
-	{
+	{ 
 		this.control = controlador;
 		this.local = control.getVista().getLocalidadPanel();
 		this.agenda = controlador.getAgenda();
@@ -82,9 +82,10 @@ public class ControladorLocalidad implements ActionListener{
 		{
 			String tipo = this.local.getTxtNombreLocalidad().getText();
 			if(tipo.length() > 0 && !tipo.equals(local.getListaLocalidad().getItem(indiceModificar)))
-			{
-				this.local.getListaLocalidad().remove(indiceModificar);
-				this.local.getListaLocalidad().add(tipo,indiceModificar);
+			{				
+				this.agenda.editarLocalidad(new LocalidadDTO(localidadesGuardadas.get(indiceModificar).getIdLocalidad(), tipo));
+				this.control.actualizarDatosLocalidades();
+				this.control.llenarTabla();
 			}
 			this.mostrarUnGrupoDeBotones(true, false);
 			local.getTxtNombreLocalidad().setText("");

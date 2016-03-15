@@ -82,8 +82,9 @@ public class ControladorTipoContacto implements ActionListener
 			String tipo = this.tipoContacto.getTxtTipoContacto().getText();
 			if(tipo.length() > 0 && !tipo.equals(tipoContacto.getListaTipoContactos().getItem(indiceModificar)))
 			{
-				this.tipoContacto.getListaTipoContactos().remove(indiceModificar);
-				this.tipoContacto.getListaTipoContactos().add(tipo,indiceModificar);
+				this.agenda.editarTipoContacto((new TipoContactoDTO(tipoContactosGuardados.get(indiceModificar).getIdTipoContacto(), tipo)));
+				this.control.actualizarDatosTipoContactos();
+				this.control.llenarTabla();
 			}
 			this.mostrarUnGrupoDeBotones(true, false);
 			tipoContacto.getTxtTipoContacto().setText("");

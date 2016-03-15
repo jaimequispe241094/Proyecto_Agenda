@@ -36,6 +36,21 @@ public class Agenda
 		tipoContacto.insert(nuevoTipo);
 	}
 	
+	public void editarPersona(PersonaDTO persona_a_editar)
+	{
+		persona.update(persona_a_editar);
+	}
+	
+	public void editarLocalidad(LocalidadDTO localidad_a_editar)
+	{
+		localidad.update(localidad_a_editar);
+	}
+	
+	public void editarTipoContacto(TipoContactoDTO tipo_a_editar)
+	{
+		tipoContacto.update(tipo_a_editar);
+	}
+	
 	public void borrarPersona(PersonaDTO persona_a_eliminar) 
 	{
 		persona.delete(persona_a_eliminar);
