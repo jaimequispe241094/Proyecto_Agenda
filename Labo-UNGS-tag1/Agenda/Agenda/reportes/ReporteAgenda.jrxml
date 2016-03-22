@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2016-03-21T14:19:08 -->
+<!-- 2016-03-22T11:24:43 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="843" pageHeight="892" columnWidth="803" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="284e0c88-a4b2-4ff8-98a2-d67b80bcffaf">
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
@@ -94,7 +94,7 @@
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="31">
+			<band height="30">
 				<rectangle>
 					<reportElement x="680" y="9" width="90" height="21" forecolor="#173007" backcolor="#1A3B0C" uuid="4de2f61c-a5f2-48f3-b2d0-d7f974a44c9b"/>
 				</rectangle>
@@ -126,8 +126,14 @@
 				</reportElement>
 				<staticText>
 					<reportElement x="302" y="10" width="268" height="30" uuid="df09700e-f0a8-43aa-a9d6-1430d1a7476d"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="rgba(13, 2, 2, 0.0)"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="rgba(13, 2, 2, 0.0)"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="rgba(13, 2, 2, 0.0)"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="rgba(13, 2, 2, 0.0)"/>
+					</box>
 					<textElement textAlignment="Center">
-						<font size="20" isBold="true"/>
+						<font fontName="Impact" size="24" isBold="true"/>
 					</textElement>
 					<text><![CDATA[REPORTE DE PERSONAS]]></text>
 				</staticText>
@@ -140,8 +146,8 @@
 					<text><![CDATA[Reporte generado el:]]></text>
 				</staticText>
 				<image>
-					<reportElement x="0" y="1" width="177" height="42" uuid="96d55aae-fe20-4a17-8d6e-283a1b6515a0"/>
-					<imageExpression><![CDATA["C:/Users/Jaime/Desktop/PRUEBA REPO/Agenda/img.jpg"]]></imageExpression>
+					<reportElement x="1" y="2" width="209" height="41" uuid="918979dc-ae67-4368-99d6-d2c4a8b67330"/>
+					<imageExpression><![CDATA["C:/Users/Jaime/Desktop/FINAL/Agenda/imagen/img.jpg"]]></imageExpression>
 				</image>
 			</frame>
 		</band>
@@ -322,24 +328,28 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="29" splitType="Stretch">
-			<textField evaluationTime="Report">
-				<reportElement x="690" y="-1" width="58" height="30" uuid="52b869cb-a151-48f6-ad3c-3147a8d111e8"/>
-				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
+		<band height="34" splitType="Stretch">
 			<textField>
-				<reportElement x="650" y="-1" width="86" height="30" uuid="5ce007da-8e81-48b7-91fd-8e603c20d7ef"/>
-				<textElement textAlignment="Right"/>
+				<reportElement x="643" y="3" width="86" height="31" uuid="10a4d88d-c7d2-4b49-80fc-8da88fef5006"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="693" y="3" width="58" height="31" uuid="f37b2457-c877-44b2-a0ba-56d3e0865cf5"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="11" splitType="Stretch"/>
+		<band height="28" splitType="Stretch"/>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="6"/>
+		<band height="20"/>
 	</lastPageFooter>
 	<summary>
 		<band height="379">
@@ -367,7 +377,7 @@
 				<text><![CDATA[GRAFICO ESTADISTICO]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="657" y="340" width="97" height="27" forecolor="#0F4A23" backcolor="#0A471B" uuid="1eb5dc96-bb69-455f-b901-6768d786be3f"/>
+				<reportElement x="657" y="340" width="101" height="27" forecolor="#0F4A23" backcolor="#0A471B" uuid="1eb5dc96-bb69-455f-b901-6768d786be3f"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="666" y="340" width="79" height="29" forecolor="#FCFCFC" uuid="015a380a-009d-4f1f-be5c-76b9013ade76"/>
