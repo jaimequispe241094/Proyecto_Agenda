@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import dto.LocalidadDTO;
 import modelo.Agenda;
 import presentacion.vista.LocalidadPanel;
+import util.AgendaUtil;
 
 public class ControladorLocalidad implements ActionListener{
 
@@ -26,6 +27,7 @@ public class ControladorLocalidad implements ActionListener{
 		this.local.getBtnBorrar().addActionListener(this);
 		this.local.getBtnGuardar().addActionListener(this);
 		this.local.getBtnCancelar().addActionListener(this);
+		this.indiceModificar = -1;
 	}
 	
 	public void cargarLocalidades()
@@ -44,12 +46,18 @@ public class ControladorLocalidad implements ActionListener{
 	{
 		if(e.getSource() == this.local.getBtnAgregar())
 		{
-			if(this.local.getTxtNombreLocalidad().getText().length() > 0)
+			String localidad_a_agregar = local.getTxtNombreLocalidad().getText();
+			if( localidad_a_agregar.length() > 0 )
 			{
-				this.agenda.agregarLocalidad(new LocalidadDTO(0,local.getTxtNombreLocalidad().getText()));
-				this.local.getTxtNombreLocalidad().setText("");
-				this.control.actualizarDatosLocalidades();				
+				if(!this.existeLocalidad(localidad_a_agregar))
+				{
+					this.agenda.agregarLocalidad( new LocalidadDTO(0,localidad_a_agregar));
+					this.control.actualizarDatosLocalidades();				
+				} else {
+					JOptionPane.showMessageDialog(null, "¡La Localidad ya existe!","Mensaje de Aviso",JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
+			this.local.getTxtNombreLocalidad().setText("");
 		}	
 		
 		else if(e.getSource() == this.local.getBtnBorrar())
@@ -80,21 +88,45 @@ public class ControladorLocalidad implements ActionListener{
 		{
 			this.mostrarUnGrupoDeBotones(true, false);
 			local.getTxtNombreLocalidad().setText("");
+			this.indiceModificar = -1;
 		}
 		
 		else if(e.getSource() == this.local.getBtnGuardar())
 		{
-			String tipo = this.local.getTxtNombreLocalidad().getText();
-			if(tipo.length() > 0 && !tipo.equals(local.getListaLocalidad().getItem(indiceModificar)))
-			{				
-				this.agenda.editarLocalidad(new LocalidadDTO(localidadesGuardadas.get(indiceModificar).getIdLocalidad(), tipo));
-				this.control.actualizarDatosLocalidades();
-				this.control.llenarTabla();
+			String nombre_localidad = this.local.getTxtNombreLocalidad().getText();
+			if(nombre_localidad.length() > 0 && !nombre_localidad.equals(local.getListaLocalidad().getItem(indiceModificar)))
+			{	
+				if(!existeLocalidad(nombre_localidad))
+				{
+					this.agenda.editarLocalidad(new LocalidadDTO(localidadesGuardadas.get(indiceModificar).getIdLocalidad(), nombre_localidad));
+					this.control.actualizarDatosLocalidades();
+					this.control.llenarTabla();
+				} else {
+				JOptionPane.showMessageDialog(null, "¡La localidad ya existe!","Mensaje de Aviso",JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 			this.mostrarUnGrupoDeBotones(true, false);
 			local.getTxtNombreLocalidad().setText("");
+			this.indiceModificar = -1;
 		}
 	}
+	
+	public boolean existeLocalidad(String local)
+	{
+		boolean ret = false;
+		String localidad_a_agregar = AgendaUtil.limpiarCadena(local);
+		String localidad_guardada;
+		
+		for (int i=0; i<localidadesGuardadas.size();i++)
+		{
+			   if(indiceModificar != i)
+			   {
+				   localidad_guardada = AgendaUtil.limpiarCadena(localidadesGuardadas.get(i).getNombre());
+				   ret = ret || (localidad_guardada.equals(localidad_a_agregar));				
+			   }
+		}
+		return ret;
+	} 
 	
 	private void mostrarUnGrupoDeBotones(boolean verABM,boolean verEdicion)
 	{
@@ -104,5 +136,4 @@ public class ControladorLocalidad implements ActionListener{
 		local.getBtnGuardar().setVisible(verEdicion);
 		local.getBtnCancelar().setVisible(verEdicion);	
 	}
-
 }

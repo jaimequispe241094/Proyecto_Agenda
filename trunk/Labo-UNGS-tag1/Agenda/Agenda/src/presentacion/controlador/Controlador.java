@@ -8,7 +8,10 @@ import java.util.List;
 import modelo.Agenda;
 import presentacion.reportes.ReporteAgenda;
 import presentacion.vista.Vista;
+import util.AgendaUtil;
+import dto.LocalidadDTO;
 import dto.PersonaDTO;
+import dto.TipoContactoDTO;
 
 public class Controlador implements ActionListener
 {
@@ -76,8 +79,8 @@ public class Controlador implements ActionListener
 			this.vista.show();
 		}
 		
-		public void actionPerformed(ActionEvent e) 
-		{
+	public void actionPerformed(ActionEvent e) 
+	{
 			if(e.getSource() == this.vista.getBtnBorrar())
 			{
 				int[] filas_seleccionadas = this.vista.getTablaPersonas().getSelectedRows();
@@ -102,19 +105,52 @@ public class Controlador implements ActionListener
 					this.vista.getContactoPanel().getTxtPiso().setText(String.valueOf(persona.getPiso()));
 					this.vista.getContactoPanel().getTxtDepto().setText(String.valueOf(persona.getDepto()));
 					this.setearCalendario_CumpleañosContacto(persona);
-					this.vista.getContactoPanel().getListaLocalidades().setSelectedItem(persona.getLocalidad());
-					this.vista.getContactoPanel().getListaTipoContactos().setSelectedItem(persona.getTipoContacto());					
+					this.vista.getContactoPanel().getListaLocalidades().setSelectedIndex(this.indiceLocalidad(persona.getLocalidad()));
+					this.vista.getContactoPanel().getListaTipoContactos().setSelectedIndex(this.indiceTipoContacto(persona.getTipoContacto()));
+					
 					this.controladorContacto.visualizarBotonesEdicion(true);
+					this.seEstaEditandoContacto(true);
+					this.vista.getTabbedPane().setSelectedIndex(0); // primer panel ..el de contacto
 				}
 			}
 			
 			else if(e.getSource() == this.vista.getBtnReporte())
 			{				
-				ReporteAgenda reporte = new ReporteAgenda(agenda.obtenerPersonas());
+				List<PersonaDTO> lista_para_reporte = this.agenda.obtenerPersonas();
+				AgendaUtil.ordenarPorTipoDeContacto(lista_para_reporte);
+				ReporteAgenda reporte = new ReporteAgenda(lista_para_reporte);
 				reporte.mostrar();				
 			}			
-		}
+	}		
 		
+	public int indiceLocalidad(LocalidadDTO local)
+	{
+		int valor = -1;
+		
+		for(int i=0;i<this.vista.getContactoPanel().getListaLocalidades().getItemCount();i++)
+		{
+			if (local.getIdLocalidad() == this.vista.getContactoPanel().getListaLocalidades().getItemAt(i).getIdLocalidad())
+			{
+				valor = i;
+			}
+		}		
+		return valor;
+	}	
+	
+	public int indiceTipoContacto(TipoContactoDTO tipo)
+	{
+		int valor = -1;
+		
+		for(int i=0;i<this.vista.getContactoPanel().getListaTipoContactos().getItemCount();i++)
+		{
+			if (tipo.getIdTipoContacto() == this.vista.getContactoPanel().getListaTipoContactos().getItemAt(i).getIdTipoContacto())
+			{
+				valor = i;
+			}
+		}		
+		return valor;
+	}
+			
 	public PersonaDTO contactoSeleccionado()
 	{
 		int index = this.vista.getTablaPersonas().getSelectedRow();
@@ -132,6 +168,13 @@ public class Controlador implements ActionListener
 		{
 			e1.printStackTrace();
 		}
+	}
+		
+	public void seEstaEditandoContacto(boolean editar) // se des / bloquean los botones y la tabla cuando se hace la edicion de un contacto  
+	{													
+		this.vista.getBtnEditar().setEnabled(!editar);
+		this.vista.getTablaPersonas().setEnabled(!editar);
+		this.vista.getBtnBorrar().setEnabled(!editar);
 	}
 	
 	public List<PersonaDTO> getPersonas_en_tabla() {
