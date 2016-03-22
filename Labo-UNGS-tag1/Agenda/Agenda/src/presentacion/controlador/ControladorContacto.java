@@ -11,6 +11,7 @@ import dto.PersonaDTO;
 import dto.TipoContactoDTO;
 import modelo.Agenda;
 import presentacion.vista.ContactoPanel;
+import util.AgendaUtil;
 
 public class ControladorContacto implements ActionListener{
 
@@ -66,6 +67,7 @@ public class ControladorContacto implements ActionListener{
 		{
 			this.visualizarBotonesEdicion(false);
 			this.vaciarCampos();
+            this.control.seEstaEditandoContacto(false);
 		}
         
 		else if(e.getSource() == this.contacto.getBtnGuardar())
@@ -80,6 +82,7 @@ public class ControladorContacto implements ActionListener{
                  this.visualizarBotonesEdicion(false);
                  this.control.llenarTabla();
             }
+            this.control.seEstaEditandoContacto(false);
 		}
 	}
 	
@@ -116,6 +119,8 @@ public class ControladorContacto implements ActionListener{
 		this.contacto.getTxtNumero().setText("");
 		this.contacto.getTxtPiso().setText("");
 		this.contacto.getTxtDepto().setText("");
+		this.contacto.getListaLocalidades().setSelectedIndex(0);
+		this.contacto.getListaTipoContactos().setSelectedIndex(0);
 	}
 	
 	public	boolean validacion(PersonaDTO p)
@@ -133,24 +138,11 @@ public class ControladorContacto implements ActionListener{
 			ret = false;
 		}
 	
-		if( !esNumero(p.getAltura()) || !esNumero(p.getPiso()) || !esNumero(p.getDepto()) || !esNumero(p.getTelefono()))
+		if( !AgendaUtil.esNumero(p.getAltura()) || !AgendaUtil.esNumero(p.getPiso()) || !AgendaUtil.esNumero(p.getDepto()) || !AgendaUtil.esNumero(p.getTelefono()))
 		{
 			JOptionPane.showMessageDialog(null, "Debe ingreser valores numericos donde corresponda", "Datos Erroneos", JOptionPane.INFORMATION_MESSAGE);
 			ret = false;
 		}
 		return ret;
-	}		
-	
-	private boolean esNumero(String valor)
-	{
-		try 
-		{
-			Integer.parseInt(valor);
-			return true;
-		} 
-		catch (NumberFormatException e)
-		{
-			return false;
-		}
 	}	
 }

@@ -22,6 +22,7 @@ public class Vista
 	private ContactoPanel contactoPanel;
 	private LocalidadPanel localidadPanel;
 	private TipoContactoPanel tipoContactoPanel;
+	private JTabbedPane tabbedPane;
 	
 	public Vista() 
 	{
@@ -29,6 +30,7 @@ public class Vista
 		initialize();
 	}
 
+	@SuppressWarnings("serial")
 	private void initialize() 
 	{
 		this.cargarLookAndFeel();
@@ -48,7 +50,12 @@ public class Vista
 		spPersonas.setBounds(319, 55, 905, 504);
 		panel.add(spPersonas);
 		
-		modelPersonas = new DefaultTableModel(null,nombreColumnas);
+		modelPersonas = new DefaultTableModel(null,nombreColumnas){
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		tablaPersonas = new JTable(modelPersonas);
 		
 		tablaPersonas.getColumnModel().getColumn(0).setPreferredWidth(200);
@@ -74,7 +81,7 @@ public class Vista
 		spPersonas.setViewportView(tablaPersonas);
 		
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(10, 33, 290, 526);
 		panel.add(tabbedPane);
 		
@@ -153,6 +160,11 @@ public class Vista
 	{
 		return nombreColumnas;
 	}	
+	
+	public JTabbedPane getTabbedPane()
+	{
+		return tabbedPane;
+	}
 	
 	public ContactoPanel getContactoPanel()
 	{
