@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2016-03-22T11:24:43 -->
+<!-- 2016-03-23T12:32:37 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="843" pageHeight="892" columnWidth="803" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="284e0c88-a4b2-4ff8-98a2-d67b80bcffaf">
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
@@ -119,23 +119,23 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="44" splitType="Stretch">
+		<band height="64" splitType="Stretch">
 			<frame>
-				<reportElement x="0" y="0" width="805" height="44" uuid="fbf866cd-64dc-4043-b98c-ed8d9f31d19c">
+				<reportElement x="-1" y="0" width="805" height="64" uuid="fbf866cd-64dc-4043-b98c-ed8d9f31d19c">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<staticText>
-					<reportElement x="302" y="10" width="268" height="30" uuid="df09700e-f0a8-43aa-a9d6-1430d1a7476d"/>
+					<reportElement x="376" y="22" width="268" height="42" uuid="df09700e-f0a8-43aa-a9d6-1430d1a7476d"/>
 					<box>
 						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="rgba(13, 2, 2, 0.0)"/>
 						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="rgba(13, 2, 2, 0.0)"/>
 						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="rgba(13, 2, 2, 0.0)"/>
 						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="rgba(13, 2, 2, 0.0)"/>
 					</box>
-					<textElement textAlignment="Center">
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
 						<font fontName="Impact" size="24" isBold="true"/>
 					</textElement>
-					<text><![CDATA[REPORTE DE PERSONAS]]></text>
+					<text><![CDATA[REPORTE]]></text>
 				</staticText>
 				<textField>
 					<reportElement x="745" y="12" width="56" height="20" uuid="0706116d-f632-4605-96d8-35fe765b5d67"/>
@@ -145,19 +145,11 @@
 					<reportElement x="643" y="12" width="102" height="20" uuid="4c9394fa-e0b1-4d17-9e4d-cc7deafc6164"/>
 					<text><![CDATA[Reporte generado el:]]></text>
 				</staticText>
-				<image>
-					<reportElement x="1" y="2" width="209" height="41" uuid="918979dc-ae67-4368-99d6-d2c4a8b67330"/>
-					<imageExpression><![CDATA["C:/Users/Jaime/Desktop/FINAL/Agenda/imagen/img.jpg"]]></imageExpression>
-				</image>
 			</frame>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="28" splitType="Stretch">
-			<frame>
-				<reportElement x="0" y="4" width="550" height="22" uuid="d078763f-d7ce-421d-8cc3-c9d81fe255f9"/>
-			</frame>
-		</band>
+		<band height="9" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="30" splitType="Stretch">

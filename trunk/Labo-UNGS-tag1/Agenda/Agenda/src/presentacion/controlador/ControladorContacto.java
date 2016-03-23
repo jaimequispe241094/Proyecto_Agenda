@@ -126,7 +126,7 @@ public class ControladorContacto implements ActionListener{
 	public	boolean validacion(PersonaDTO p)
 	{
 		boolean ret = true;
-		if (p.getNombre().length()<= 0 ||p.getTelefono().length()<=0 || p.getCalle().length()<=0 || p.getEmail().length()<=0 )
+		if (p.getNombre().length()<= 0 ||p.getTelefono().length()<=0 || p.getCalle().length()<=0 || p.getEmail().length()<=0 || p.getAltura().length()<=0 || p.getPiso().length()<=0 || p.getDepto().length()<=0)
 		{
 			JOptionPane.showMessageDialog(null, "No deben haber campos vacios", "Datos Incompletos", JOptionPane.INFORMATION_MESSAGE);
 			ret = false;
