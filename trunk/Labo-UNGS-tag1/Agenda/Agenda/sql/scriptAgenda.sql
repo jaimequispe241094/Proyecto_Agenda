@@ -1,10 +1,9 @@
-CREATE DATABASE `agenda`;
-
+CREATE DATABASE agenda;
 USE agenda;
 CREATE TABLE `localidad` 
 (
   `idLocalidad` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(45) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`idLocalidad`)
 );
 
@@ -12,7 +11,7 @@ USE agenda;
 CREATE TABLE `tipoContacto` 
 (
   `idTipo` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(45) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
   PRIMARY KEY (`idTipo`)
 );
 
@@ -20,17 +19,17 @@ USE agenda;
 CREATE TABLE `personas` 
 (
   `idPersona` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(45) NOT NULL,
-  `Telefono` varchar(20) NOT NULL,
-  `Calle` varchar(45) NOT NULL,
-  `Altura` int(11) NOT NULL,
-  `Piso` int(11) NOT NULL,
-  `Depto` int(11) NOT NULL,
-  `Localidad` int(11) NOT NULL,
-  `Email` varchar(45) NOT NULL,
-  `Cumpleaños` varchar(45) NOT NULL,
-  `TipoContacto` int(11) NOT NULL,  
+  `nombre` varchar(45) NOT NULL,
+  `telefono` varchar(20) NOT NULL,
+  `calle` varchar(45) NOT NULL,
+  `altura` int(11) NOT NULL,
+  `piso` int(11) NOT NULL,
+  `depto` int(11) NOT NULL,
+  `localidad` int(11) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `cumpleaños` varchar(45) NOT NULL,
+  `tipoContacto` int(11) NOT NULL,  
   PRIMARY KEY (`idPersona`),
-  FOREIGN KEY (`Localidad`) REFERENCES localidad (`idLocalidad`),
-  FOREIGN KEY (`TipoContacto`) REFERENCES tipoContacto (`idTipo`)
+  FOREIGN KEY (`localidad`) REFERENCES localidad (`idLocalidad`),
+  FOREIGN KEY (`tipoContacto`) REFERENCES tipoContacto (`idTipo`)
 );
