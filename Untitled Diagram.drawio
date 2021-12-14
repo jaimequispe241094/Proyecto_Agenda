@@ -1,1 +1,37 @@
-<mxfile host="app.diagrams.net" modified="2021-12-14T12:38:10.803Z" agent="5.0 (X11)" version="15.9.6" etag="AnUM7S3NlacQNvp9unUB" type="github"><diagram id="xry3F6HuEqjcsfFHukOu">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-12-14T13:02:59.406Z" agent="5.0 (X11)" etag="O07T1K_71ntTPUeWBz1v" version="15.9.6" type="github">
+  <diagram id="xry3F6HuEqjcsfFHukOu" name="Page-1">
+    <mxGraphModel dx="1422" dy="791" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aLTYTu-wwrsiG_UJEPfg-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="aLTYTu-wwrsiG_UJEPfg-1" target="aLTYTu-wwrsiG_UJEPfg-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aLTYTu-wwrsiG_UJEPfg-1" value="&lt;div&gt;Controller&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;add (addTransaction)&lt;/div&gt;" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="40" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aLTYTu-wwrsiG_UJEPfg-2" value="&lt;div&gt;BookieManager&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="260" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aLTYTu-wwrsiG_UJEPfg-3" value="&lt;div&gt;allaria_redeption&lt;/div&gt;&lt;div&gt;solicitudes&lt;br&gt;&lt;/div&gt;" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="260" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aLTYTu-wwrsiG_UJEPfg-4" value="AccountApplyTax" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="420" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aLTYTu-wwrsiG_UJEPfg-5" value="&lt;div&gt;Transaction&lt;/div&gt;&lt;div&gt;- id&lt;br&gt;&lt;/div&gt;" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="340" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aLTYTu-wwrsiG_UJEPfg-6" value="&lt;div&gt;AddTransactionWithFlag&lt;/div&gt;&lt;div&gt;- addTransaction&lt;/div&gt;&lt;div&gt;- applyTax&lt;br&gt;&lt;/div&gt;" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="40" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aLTYTu-wwrsiG_UJEPfg-7" value="Transaction&lt;div&gt;Manager&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="140" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aLTYTu-wwrsiG_UJEPfg-12" value="Object" style="html=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="330" width="110" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
