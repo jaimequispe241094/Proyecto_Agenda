@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-12-15T15:54:10.305Z" agent="5.0 (X11)" etag="pvci5UyYCSQ5Pb9RvJZ6" version="15.9.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-12-15T15:57:08.394Z" agent="5.0 (X11)" etag="1OkOXWUWKgE3l7rLFzBE" version="15.9.6" type="github">
   <diagram id="xry3F6HuEqjcsfFHukOu" name="Page-1">
     <mxGraphModel dx="1422" dy="791" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -129,8 +129,11 @@
         <mxCell id="jkjDyDMGU6jc-YTewSWY-45" value="&lt;div&gt;Vinculaviones&lt;/div&gt;&lt;div&gt;- aprobada&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="380" y="585" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jkjDyDMGU6jc-YTewSWY-47" value="??" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1065" y="230" width="60" height="30" as="geometry" />
+        <mxCell id="jkjDyDMGU6jc-YTewSWY-47" value="&lt;div&gt;Flujo normal&lt;/div&gt;&lt;div&gt;de transaccion&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1065" y="230" width="95" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jkjDyDMGU6jc-YTewSWY-48" value="Resaltar la transaccion sobre las otras" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="655" y="370" width="110" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
