@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2021-12-15T15:28:59.375Z" agent="5.0 (X11)" etag="altIVi70JbT7MjrKkH2h" version="15.9.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-12-15T15:54:10.305Z" agent="5.0 (X11)" etag="pvci5UyYCSQ5Pb9RvJZ6" version="15.9.6" type="github">
   <diagram id="xry3F6HuEqjcsfFHukOu" name="Page-1">
     <mxGraphModel dx="1422" dy="791" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="aLTYTu-wwrsiG_UJEPfg-3" value="&lt;div&gt;Solicitudes&lt;/div&gt;&lt;div&gt;(allaria_redeptions)&lt;/div&gt;&lt;div&gt;- boolean exempt&lt;/div&gt;&lt;div&gt;- option(idTransaction)&lt;/div&gt;" style="html=1;" parent="1" vertex="1">
-          <mxGeometry x="310" y="490" width="130" height="90" as="geometry" />
+        <mxCell id="aLTYTu-wwrsiG_UJEPfg-3" value="&lt;div&gt;Solicitudes&lt;/div&gt;&lt;div&gt;(allaria_redeptions)&lt;/div&gt;" style="html=1;" parent="1" vertex="1">
+          <mxGeometry x="560" y="460" width="130" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jkjDyDMGU6jc-YTewSWY-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="aLTYTu-wwrsiG_UJEPfg-7" target="jkjDyDMGU6jc-YTewSWY-15">
           <mxGeometry relative="1" as="geometry" />
@@ -14,7 +14,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="aLTYTu-wwrsiG_UJEPfg-7" value="&lt;div&gt;Booky&lt;/div&gt;&lt;div&gt;TransactionService&lt;/div&gt;" style="html=1;" parent="1" vertex="1">
-          <mxGeometry x="560" y="510" width="110" height="50" as="geometry" />
+          <mxGeometry x="750" y="465" width="110" height="50" as="geometry" />
         </mxCell>
         <mxCell id="jkjDyDMGU6jc-YTewSWY-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="aLTYTu-wwrsiG_UJEPfg-12" target="jkjDyDMGU6jc-YTewSWY-24">
           <mxGeometry relative="1" as="geometry" />
@@ -73,19 +73,19 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jkjDyDMGU6jc-YTewSWY-15" value="&lt;div&gt;Case exempt&lt;/div&gt;&lt;div&gt;by redemption&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="555" y="620" width="120" height="60" as="geometry" />
+          <mxGeometry x="745" y="585" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jkjDyDMGU6jc-YTewSWY-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jkjDyDMGU6jc-YTewSWY-17" target="jkjDyDMGU6jc-YTewSWY-37">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jkjDyDMGU6jc-YTewSWY-17" value="Flag" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="495" y="720" width="120" height="60" as="geometry" />
+          <mxGeometry x="685" y="685" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jkjDyDMGU6jc-YTewSWY-41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jkjDyDMGU6jc-YTewSWY-19" target="jkjDyDMGU6jc-YTewSWY-40">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="jkjDyDMGU6jc-YTewSWY-19" value="Calculate(*)" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="625" y="720" width="120" height="60" as="geometry" />
+          <mxGeometry x="815" y="685" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="jkjDyDMGU6jc-YTewSWY-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jkjDyDMGU6jc-YTewSWY-21" target="jkjDyDMGU6jc-YTewSWY-9">
           <mxGeometry relative="1" as="geometry" />
@@ -112,13 +112,25 @@
           <mxGeometry x="470" y="290" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="jkjDyDMGU6jc-YTewSWY-37" value="&lt;div&gt;Chequear que la&lt;/div&gt;&lt;div&gt;cuenta tenga &lt;br&gt;&lt;/div&gt;&lt;div&gt;vinculada una&lt;/div&gt;&lt;div&gt;solicitud valida&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="289" y="705" width="125" height="90" as="geometry" />
+          <mxGeometry x="479" y="670" width="125" height="90" as="geometry" />
         </mxCell>
         <mxCell id="jkjDyDMGU6jc-YTewSWY-40" value="&lt;div&gt;Tiene que estar la &lt;br&gt;&lt;/div&gt;&lt;div&gt;solicitud actualizada&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="825" y="720" width="120" height="60" as="geometry" />
+          <mxGeometry x="1015" y="685" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jkjDyDMGU6jc-YTewSWY-42" value="&lt;div&gt;Approve&lt;/div&gt;&lt;div&gt;Process&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="960" y="200" width="90" height="50" as="geometry" />
+        <mxCell id="jkjDyDMGU6jc-YTewSWY-42" value="&lt;div&gt;Add&lt;/div&gt;&lt;div&gt;Pending&lt;br&gt;&lt;/div&gt;&lt;div&gt;Approve&lt;/div&gt;&lt;div&gt;Process&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="200" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="jkjDyDMGU6jc-YTewSWY-44" value="&lt;div&gt;AllariaRedeḿptionApproval&lt;br&gt;&lt;/div&gt;&lt;div&gt;- idSolicitud&lt;br&gt;&lt;/div&gt;&lt;div&gt;- exempt&lt;/div&gt;&lt;div&gt;- idTransaction&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="460" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jkjDyDMGU6jc-YTewSWY-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="jkjDyDMGU6jc-YTewSWY-45" target="aLTYTu-wwrsiG_UJEPfg-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jkjDyDMGU6jc-YTewSWY-45" value="&lt;div&gt;Vinculaviones&lt;/div&gt;&lt;div&gt;- aprobada&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="585" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jkjDyDMGU6jc-YTewSWY-47" value="??" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1065" y="230" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
